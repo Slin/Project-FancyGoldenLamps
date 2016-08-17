@@ -6,6 +6,8 @@
 #define FANCYGOLDENLAMPS_ENTITY_H
 
 #include "EntityManager.h"
+#include "World.h"
+#include <SFML/Graphics.hpp>
 
 namespace FGL
 {
@@ -26,7 +28,7 @@ namespace FGL
 		virtual void DrawLate(sf::RenderWindow *window)
 		{
 
-		};
+		}
 	};
 }
 

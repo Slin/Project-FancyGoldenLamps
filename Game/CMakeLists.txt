@@ -34,6 +34,13 @@ if(SFML_FOUND)
     target_link_libraries(${EXECUTABLE_NAME} ${SFML_LIBRARIES} ${SFML_DEPENDENCIES})
 endif()
 
+# Detect and add BOX2D
+find_package(Box2D REQUIRED)
+if(BOX2D_FOUND)
+    include_directories(${BOX2D_INCLUDE_DIR})
+    target_link_libraries(${EXECUTABLE_NAME} ${BOX2D_LIBRARIES})
+endif()
+
 if(APPLE)
     SET(CMAKE_EXE_LINKER_FLAGS "-framework Foundation -w")
 endif()

@@ -13,13 +13,14 @@ namespace FGL
 	{
 	public:
 		BoardEntity();
+		~BoardEntity();
 
 		void Update(float timeStep);
 		void Draw(sf::RenderWindow *window);
 
 	private:
 		sf::Sprite *_object;
-
+		std::vector<b2Body*> _bodies;
 	};
 }
 

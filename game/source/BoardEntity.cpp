@@ -8,12 +8,20 @@ namespace FGL
 {
 	BoardEntity::BoardEntity()
 	{
-		_object = new sf::Sprite();
-		_object->setTexture(*TexturePool::GetInstance()->GetTexture("assets/textures/background_test.png"));
+		_object = World::CreateSprite("assets/textures/background_test.png");
 
-		_object->setOrigin(_object->getLocalBounds().width*0.5f, _object->getLocalBounds().height*0.5f);
-		_object->setScale(World::GetInstance()->GetScaleFactor(), World::GetInstance()->GetScaleFactor());
-		_object->setPosition(World::GetInstance()->GetWindow()->getSize().x*0.5f, World::GetInstance()->GetWindow()->getSize().y*0.5f);
+		b2Body *body = World::CreateStaticBoxCollider(sf::Vector2u(960, 1250), sf::Vector2u(1920, 100));
+		_bodies.push_back(body);
+	}
+
+	BoardEntity::~BoardEntity()
+	{
+		delete _object;
+		for(b2Body *body : _bodies)
+		{
+			World::GetInstance()->GetPhysicsWorld()->DestroyBody(body);
+		}
+		_bodies.clear();
 	}
 
 	void BoardEntity::Update(float timeStep)

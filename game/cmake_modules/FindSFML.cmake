@@ -203,7 +203,7 @@ foreach(FIND_SFML_COMPONENT ${SFML_FIND_COMPONENTS})
         endif()
     else()
         # library not found
- #       set(SFML_FOUND FALSE)
+        set(SFML_FOUND FALSE)
         set(SFML_${FIND_SFML_COMPONENT_UPPER}_FOUND FALSE)
         set(SFML_${FIND_SFML_COMPONENT_UPPER}_LIBRARY "")
         set(FIND_SFML_MISSING "${FIND_SFML_MISSING} SFML_${FIND_SFML_COMPONENT_UPPER}_LIBRARY")
@@ -355,10 +355,10 @@ endif()
 if (NOT SFML_FOUND)
     if(SFML_FIND_REQUIRED)
         # fatal error
-#        message(FATAL_ERROR ${FIND_SFML_ERROR})
+        message(FATAL_ERROR ${FIND_SFML_ERROR})
     elseif(NOT SFML_FIND_QUIETLY)
         # error but continue
-#        message("${FIND_SFML_ERROR}")
+        message("${FIND_SFML_ERROR}")
     endif()
 endif()
 

@@ -13,10 +13,14 @@ namespace FGL
 	{
 	public:
 		PlayerEntity();
+		~PlayerEntity();
 
 		void Update(float timeStep);
 		void Draw(sf::RenderWindow *window);
 
+	private:
+		sf::Sprite *_object;
+		b2Body *_body;
 	};
 }
 
