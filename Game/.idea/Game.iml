@@ -2,13 +2,30 @@
 <module type="CPP_MODULE" version="4">
   <component name="NewModuleRootManager">
     <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/cmake_modules/FindSFML.cmake" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/Entity.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/ParticleEmitter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/TexturePool.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/World.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/SoundPool.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/PlayerEntity.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/BoardEntity.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/BoardEntity.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/World.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/main.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/TexturePool.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/ParticleEmitter.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/PlayerEntity.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/EntityManager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/EntityManager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/SoundPool.cpp" isTestSource="false" />
     </content>
     <orderEntry type="sourceFolder" forTests="false" />
     <orderEntry type="module-library">
       <library name="Header Search Paths">
         <CLASSES>
+          <root url="file://$USER_HOME$/Downloads/SFML-2.4.0-osx-clang/include" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Carbon.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Carbon.framework/Frameworks/HIToolbox.framework/Headers" />
@@ -182,6 +199,7 @@
           <root url="file:///Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/lib/clang/7.3.0/include" />
         </CLASSES>
         <SOURCES>
+          <root url="file://$USER_HOME$/Downloads/SFML-2.4.0-osx-clang/include" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/AudioToolbox.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Carbon.framework/Headers" />
           <root url="file:///Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.11.sdk/System/Library/Frameworks/Carbon.framework/Frameworks/HIToolbox.framework/Headers" />
