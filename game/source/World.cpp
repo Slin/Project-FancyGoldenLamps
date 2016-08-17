@@ -45,7 +45,7 @@ namespace FGL
 #if defined(FULLSCREEN)
 		_window = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Fancy Golden Lamps", sf::Style::Fullscreen);
 #else
-		_window = new sf::RenderWindow(sf::VideoMode(1920, 600), "Fancy Golden Lamps");
+		_window = new sf::RenderWindow(sf::VideoMode(1920, 1200), "Fancy Golden Lamps");
 #endif
 		_scaleFactor = _window->getSize().y / 1200.0f;
 	}

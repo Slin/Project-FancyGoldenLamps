@@ -18,9 +18,12 @@ namespace FGL
 		void Update(float timeStep);
 		void Draw(sf::RenderWindow *window);
 
+		bool IsGrounded();
+
 	private:
 		sf::Sprite *_object;
 		b2Body *_body;
+		b2Fixture *_boxFixture;
 	};
 }
 
