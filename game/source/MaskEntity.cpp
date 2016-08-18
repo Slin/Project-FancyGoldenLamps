@@ -54,8 +54,18 @@ namespace FGL
 
 						b2Filter filter = _bodyFixture->GetFilterData();
 						filter.maskBits = 0x0001|0x0002|((_carryingPlayer->_playerID==0)?0x0008:0x0004);
-						_bodyFixture->SetFilterData(filter);
 
+						if(!_isGood)
+						{
+							_object->setColor(sf::Color::Red);
+						}
+						else
+						{
+							_object->setColor(sf::Color::Green);
+							filter.maskBits |= 0x0010;
+						}
+
+						_bodyFixture->SetFilterData(filter);
 					}
 					else
 					{
@@ -139,6 +149,10 @@ namespace FGL
 	{
 		_isGood = true;
 		_bodyFixture->SetUserData(this);
+
+		b2Filter filter = _bodyFixture->GetFilterData();
+		filter.maskBits = 0x0001|0x0002|0x0004|0x0008|0x0010;
+		_bodyFixture->SetFilterData(filter);
 	}
 
 	void MaskEntity::Throw(sf::Vector2f direction)

@@ -5,10 +5,11 @@
 #include "MaskSink.h"
 #include "MaskEntity.h"
 #include "MaskSpawner.h"
+#include "IngameUI.h"
 
 namespace FGL
 {
-	MaskSink::MaskSink(sf::Vector2f position, sf::Vector2f size)
+	MaskSink::MaskSink(int id, sf::Vector2f position, sf::Vector2f size) : _playerID(id)
 	{
 		b2BodyDef bodyDef;
 		b2PolygonShape dynamicBox;
@@ -17,7 +18,7 @@ namespace FGL
 		_body = World::GetInstance()->GetPhysicsWorld()->CreateBody(&bodyDef);
 		dynamicBox.SetAsBox(size.x*0.5f*WORLD_TO_BOX2D, size.y*0.5f*WORLD_TO_BOX2D);
 		fixtureDef.shape = &dynamicBox;
-		fixtureDef.filter.categoryBits = 0x0001;
+		fixtureDef.filter.categoryBits = 0x0010;
 		fixtureDef.filter.maskBits = 0x0002;
 		_bodyFixture = _body->CreateFixture(&fixtureDef);
 	}
@@ -40,6 +41,8 @@ namespace FGL
 				{
 					MaskEntity *mask = (MaskEntity*)otherFixture->GetUserData();
 					mask->Collect();
+
+					World::GetInstance()->GetIngameUI()->AddPoint(_playerID);
 				}
 			}
 

@@ -3,12 +3,13 @@
 //
 
 #include "PlayerEntity.h"
+#include "IngameUI.h"
 
 namespace FGL
 {
 	PlayerEntity::PlayerEntity(int id, sf::Vector2f position) : _throwTimer(100), _playerID(id), _jumpTimer(100), _spawnPosition(position), _currentMask(nullptr)
 	{
-		_object = World::CreateSprite("assets/textures/player2.png");
+		_object = World::CreateSprite("assets/textures/player_test2.png");
 		_object->move(position);
 
 		_object->setColor(((id==0)?sf::Color::Green:sf::Color::Red));
@@ -166,5 +167,7 @@ namespace FGL
 			_currentMask = nullptr;
 		}
 		_body->SetTransform(b2Vec2(_spawnPosition.x*WORLD_TO_BOX2D, _spawnPosition.y*WORLD_TO_BOX2D), 0.0f);
+
+		World::GetInstance()->GetIngameUI()->AddPoint(_playerID==0?1:0);
 	}
 }

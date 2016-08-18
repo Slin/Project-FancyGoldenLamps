@@ -12,7 +12,7 @@ namespace FGL
 	class MaskSink : public Entity
 	{
 	public:
-		MaskSink(sf::Vector2f position, sf::Vector2f size);
+		MaskSink(int id, sf::Vector2f position, sf::Vector2f size);
 		~MaskSink();
 
 		void Update(float timeStep);
@@ -21,6 +21,8 @@ namespace FGL
 	private:
 		b2Body *_body;
 		b2Fixture *_bodyFixture;
+
+		int _playerID;
 	};
 }
 

@@ -22,6 +22,7 @@ namespace FGL
 {
 	class BoardEntity;
 	class MaskSpawner;
+	class IngameUI;
 	class World
 	{
 	public:
@@ -46,6 +47,11 @@ namespace FGL
 		MaskSpawner *GetMaskSpawner() const
 		{
 			return _maskSpawner;
+		}
+
+		IngameUI *GetIngameUI() const
+		{
+			return _ingameUI;
 		}
 
 		static World *GetInstance();
@@ -90,6 +96,7 @@ namespace FGL
 
 		b2World *_physicsWorld;
 		MaskSpawner *_maskSpawner;
+		IngameUI *_ingameUI;
 
 		float _screenShakeTimer;
 	};

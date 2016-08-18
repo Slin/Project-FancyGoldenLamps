@@ -8,6 +8,7 @@
 #include "PlayerEntity.h"
 #include "MaskSpawner.h"
 #include "MaskSink.h"
+#include "IngameUI.h"
 
 #if __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
@@ -62,8 +63,10 @@ namespace FGL
 
 		new BoardEntity();
 
-		new MaskSink(sf::Vector2f(-525, 525), sf::Vector2f(150, 150));
-		new MaskSink(sf::Vector2f(525, 525), sf::Vector2f(150, 150));
+		_ingameUI = new IngameUI();
+
+		new MaskSink(0, sf::Vector2f(-525, 525), sf::Vector2f(150, 150));
+		new MaskSink(1, sf::Vector2f(525, 525), sf::Vector2f(150, 150));
 
 		new PlayerEntity(0, sf::Vector2f(-562.0f, 537.0f));
 		new PlayerEntity(1, sf::Vector2f(562.0f, 537.0f));

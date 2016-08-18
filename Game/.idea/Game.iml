@@ -5,15 +5,17 @@
       <sourceFolder url="file://$MODULE_DIR$/CMakeLists.txt" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cmake_modules/FindSFML.cmake" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/cmake_modules/FindBox2D.cmake" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/source/Entity.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/EntityManager.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/ParticleEmitter.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskSink.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/World.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/SoundPool.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskEntity.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/source/EntityManager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/IngameUI.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/PlayerEntity.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskSpawner.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/EntityManager.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/Entity.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskSpawner.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/BoardEntity.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/BoardEntity.cpp" isTestSource="false" />
@@ -24,7 +26,7 @@
       <sourceFolder url="file://$MODULE_DIR$/source/TexturePool.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/ParticleEmitter.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/PlayerEntity.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/source/EntityManager.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/IngameUI.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskSink.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/SoundPool.cpp" isTestSource="false" />
     </content>
