@@ -77,15 +77,20 @@ namespace FGL
 			return body;
 		}
 
+		void Shake();
+
 	private:
 		World();
 		static World *_instance;
 
 		sf::RenderWindow *_window;
+		sf::View *_view;
 		float _scaleFactor;
 		std::string _bundlePath;
 
 		b2World *_physicsWorld;
+
+		float _screenShakeTimer;
 	};
 }
 

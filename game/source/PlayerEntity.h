@@ -30,6 +30,7 @@ namespace FGL
 		int _playerID;
 
 		int _throwTimer;
+		int _jumpTimer;
 	};
 }
 

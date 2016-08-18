@@ -9,10 +9,12 @@
 
 namespace FGL
 {
-	PlayerEntity::PlayerEntity(int id) : _throwTimer(100), _playerID(id)
+	PlayerEntity::PlayerEntity(int id) : _throwTimer(100), _playerID(id), _jumpTimer(100)
 	{
 		_object = World::CreateSprite("assets/textures/player.png");
 		_object->move(0.0f, -64.0f);
+
+		_object->setColor(((id==0)?sf::Color::Green:sf::Color::Red));
 
 		b2BodyDef bodyDef;
 		b2PolygonShape dynamicBox;
@@ -26,7 +28,7 @@ namespace FGL
 		fixtureDef.density = 1.0f;
 		fixtureDef.friction = 10.0f;
 		fixtureDef.filter.categoryBits = 0x0002;
-		fixtureDef.filter.maskBits = 0x0001;
+		fixtureDef.filter.maskBits = 0x0001|0x0002;
 		_boxFixture = _body->CreateFixture(&fixtureDef);
 		_body->SetFixedRotation(true);
 		_body->SetBullet(true);
@@ -68,13 +70,13 @@ namespace FGL
 		if(_playerID == 0)
 		{
 			moveDirection.x = sf::Keyboard::isKeyPressed(sf::Keyboard::D)-sf::Keyboard::isKeyPressed(sf::Keyboard::A);
-			moveDirection.y = sf::Keyboard::isKeyPressed(sf::Keyboard::W);//-sf::Keyboard::isKeyPressed(sf::Keyboard::S);
+			moveDirection.y = sf::Keyboard::isKeyPressed(sf::Keyboard::W);
 			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt);
 		}
 		else if(_playerID == 1)
 		{
 			moveDirection.x = sf::Keyboard::isKeyPressed(sf::Keyboard::Right)-sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
-			moveDirection.y = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);//-sf::Keyboard::isKeyPressed(sf::Keyboard::S);
+			moveDirection.y = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
 			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::RAlt);
 		}
 
@@ -96,9 +98,17 @@ namespace FGL
 		}
 
 		bool isGrounded = IsGrounded();
-		if(moveDirection.y > 0.0f && isGrounded)
+		if(moveDirection.y > 0.0f)
 		{
-			_body->ApplyLinearImpulse(b2Vec2(0.0f, -3.0f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
+			if(_jumpTimer > 1 && isGrounded)
+			{
+				_body->ApplyLinearImpulse(b2Vec2(0.0f, -6.0f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
+			}
+			_jumpTimer = 0;
+		}
+		else
+		{
+			_jumpTimer += 1;
 		}
 
 		if((moveDirection.x < 0.0f && _body->GetLinearVelocity().x > -3.0f) || (moveDirection.x > 0.0f && _body->GetLinearVelocity().x < 3.0f))

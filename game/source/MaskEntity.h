@@ -19,10 +19,13 @@ namespace FGL
 		void Draw(sf::RenderWindow *window);
 
 		void Throw(sf::Vector2f direction);
+		void Explode();
 
 	private:
 		sf::Sprite *_object;
 		b2Body *_body;
+
+		float _explosionTimer;
 	};
 }
 

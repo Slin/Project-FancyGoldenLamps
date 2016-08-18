@@ -31,15 +31,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="World.cpp" pinned="false" current-in-tab="false">
+      <file leaf-file-name="World.cpp" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/source/World.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+            <state relative-caret-position="722">
+              <caret line="143" column="32" selection-start-line="143" selection-start-column="32" selection-end-line="143" selection-end-column="32" />
               <folding>
                 <element signature="e#47#65#0" expanded="true" />
-                <element signature="e#462#743#0" expanded="true" />
-                <element signature="e#804#913#0" expanded="true" />
+                <element signature="e#487#768#0" expanded="true" />
+                <element signature="e#829#938#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -58,8 +58,8 @@
       <file leaf-file-name="World.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/World.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="1050">
-              <caret line="70" column="95" selection-start-line="70" selection-start-column="95" selection-end-line="70" selection-end-column="95" />
+            <state relative-caret-position="248">
+              <caret line="79" column="21" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
               <folding>
                 <element signature="e#115#139#0" expanded="true" />
               </folding>
@@ -67,11 +67,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="PlayerEntity.cpp" pinned="false" current-in-tab="true">
+      <file leaf-file-name="PlayerEntity.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/PlayerEntity.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="197">
-              <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
+            <state relative-caret-position="105">
+              <caret line="16" column="69" selection-start-line="16" selection-start-column="69" selection-end-line="16" selection-end-column="69" />
               <folding>
                 <element signature="e#47#72#0" expanded="true" />
               </folding>
@@ -82,7 +82,7 @@
       <file leaf-file-name="EntityManager.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/EntityManager.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="263">
+            <state relative-caret-position="803">
               <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
               <folding />
             </state>
@@ -92,8 +92,8 @@
       <file leaf-file-name="MaskEntity.cpp" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/MaskEntity.cpp">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="375">
-              <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
+            <state relative-caret-position="707">
+              <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
               <folding />
             </state>
           </provider>
@@ -102,8 +102,8 @@
       <file leaf-file-name="MaskEntity.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/MaskEntity.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="120">
-              <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+            <state relative-caret-position="315">
+              <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
               <folding />
             </state>
           </provider>
@@ -112,8 +112,8 @@
       <file leaf-file-name="PlayerEntity.h" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/source/PlayerEntity.h">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="29" column="21" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="21" />
+            <state relative-caret-position="383">
+              <caret line="32" column="22" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="22" />
               <folding />
             </state>
           </provider>
@@ -147,13 +147,13 @@
         <option value="$PROJECT_DIR$/cmake_modules/FindSFML.cmake" />
         <option value="$PROJECT_DIR$/source/Entity.h" />
         <option value="$PROJECT_DIR$/source/BoardEntity.h" />
-        <option value="$PROJECT_DIR$/source/World.h" />
-        <option value="$PROJECT_DIR$/source/MaskEntity.h" />
-        <option value="$PROJECT_DIR$/source/MaskEntity.cpp" />
         <option value="$PROJECT_DIR$/source/BoardEntity.cpp" />
         <option value="$PROJECT_DIR$/source/PlayerEntity.h" />
-        <option value="$PROJECT_DIR$/source/World.cpp" />
         <option value="$PROJECT_DIR$/source/PlayerEntity.cpp" />
+        <option value="$PROJECT_DIR$/source/MaskEntity.h" />
+        <option value="$PROJECT_DIR$/source/World.h" />
+        <option value="$PROJECT_DIR$/source/MaskEntity.cpp" />
+        <option value="$PROJECT_DIR$/source/World.cpp" />
       </list>
     </option>
   </component>
@@ -468,7 +468,7 @@
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
-      <option name="time" value="21" />
+      <option name="time" value="23" />
     </breakpoint-manager>
     <watches-manager />
   </component>
@@ -487,8 +487,8 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#47#65#0" expanded="true" />
-            <element signature="e#462#743#0" expanded="true" />
-            <element signature="e#804#913#0" expanded="true" />
+            <element signature="e#487#768#0" expanded="true" />
+            <element signature="e#829#938#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -697,32 +697,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/source/World.h">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="1050">
-          <caret line="70" column="95" selection-start-line="70" selection-start-column="95" selection-end-line="70" selection-end-column="95" />
-          <folding>
-            <element signature="e#115#139#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/MaskEntity.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="375">
-          <caret line="25" column="50" selection-start-line="25" selection-start-column="50" selection-end-line="25" selection-end-column="50" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/EntityManager.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="263">
-          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/source/BoardEntity.cpp">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="225">
@@ -733,38 +707,72 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/source/PlayerEntity.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
-          <caret line="29" column="21" selection-start-line="29" selection-start-column="12" selection-end-line="29" selection-end-column="21" />
+        <state relative-caret-position="383">
+          <caret line="32" column="22" selection-start-line="32" selection-start-column="12" selection-end-line="32" selection-end-column="22" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/PlayerEntity.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="16" column="69" selection-start-line="16" selection-start-column="69" selection-end-line="16" selection-end-column="69" />
+          <folding>
+            <element signature="e#47#72#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/MaskEntity.h">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
+        <state relative-caret-position="315">
+          <caret line="21" column="23" selection-start-line="21" selection-start-column="23" selection-end-line="21" selection-end-column="23" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/EntityManager.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="803">
+          <caret line="77" column="0" selection-start-line="77" selection-start-column="0" selection-end-line="77" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/World.h">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="248">
+          <caret line="79" column="21" selection-start-line="79" selection-start-column="21" selection-end-line="79" selection-end-column="21" />
+          <folding>
+            <element signature="e#115#139#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/source/MaskEntity.cpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="707">
+          <caret line="64" column="38" selection-start-line="64" selection-start-column="38" selection-end-line="64" selection-end-column="38" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Downloads/SFML-2.4.0-osx-clang/include/SFML/Graphics/View.hpp">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1772">
+          <caret line="123" column="9" selection-start-line="123" selection-start-column="9" selection-end-line="123" selection-end-column="9" />
           <folding />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/source/World.cpp">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="59" column="26" selection-start-line="59" selection-start-column="26" selection-end-line="59" selection-end-column="26" />
+        <state relative-caret-position="722">
+          <caret line="143" column="32" selection-start-line="143" selection-start-column="32" selection-end-line="143" selection-end-column="32" />
           <folding>
             <element signature="e#47#65#0" expanded="true" />
-            <element signature="e#462#743#0" expanded="true" />
-            <element signature="e#804#913#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/source/PlayerEntity.cpp">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="197">
-          <caret line="74" column="9" selection-start-line="74" selection-start-column="9" selection-end-line="74" selection-end-column="9" />
-          <folding>
-            <element signature="e#47#72#0" expanded="true" />
+            <element signature="e#487#768#0" expanded="true" />
+            <element signature="e#829#938#0" expanded="true" />
           </folding>
         </state>
       </provider>

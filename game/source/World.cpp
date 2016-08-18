@@ -27,7 +27,7 @@ namespace FGL
 		return _instance;
 	}
 
-	World::World() : _physicsWorld(nullptr)
+	World::World() : _physicsWorld(nullptr), _screenShakeTimer(0.0f)
 	{
 #if __APPLE__ && !(TARGET_OS_IPHONE) && NDEBUG
 		CFBundleRef bundle = CFBundleGetMainBundle();
@@ -48,6 +48,10 @@ namespace FGL
 		_window = new sf::RenderWindow(sf::VideoMode(1920, 1200), "Fancy Golden Lamps");
 #endif
 		_window->setFramerateLimit(60);
+
+		_view = new sf::View(sf::FloatRect(0, 0, 1920, 1200));
+		_window->setView(*_view);
+
 		_scaleFactor = _window->getSize().y / 1200.0f;
 	}
 
@@ -123,6 +127,20 @@ namespace FGL
 
 	void World::Update(float timeStep)
 	{
+		if(_screenShakeTimer > 0)
+		{
+			_view->setRotation(((float)rand()*10.0f/(float)INT_MAX)-5.0f);
+		}
+		else
+		{
+			_view->setRotation(0.0f);
+		}
+		_window->setView(*_view);
+		_screenShakeTimer -= timeStep;
+	}
 
+	void World::Shake()
+	{
+		_screenShakeTimer = 0.13f;
 	}
 }
