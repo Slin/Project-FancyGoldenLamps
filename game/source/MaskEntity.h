@@ -44,6 +44,7 @@ namespace FGL
 		bool _wasThrown;
 
 		float _explosionTimer;
+		float _glowAnimationTimer;
 	};
 }
 

@@ -9,9 +9,11 @@
 
 namespace FGL
 {
-	MaskEntity::MaskEntity(sf::Vector2f position) : _explosionTimer(3.0f), _atSpawn(true), _carryingPlayer(nullptr), _wasThrown(false), _isGood(false), _needsCollection(false)
+	MaskEntity::MaskEntity(sf::Vector2f position) : _explosionTimer(3.0f), _atSpawn(true), _carryingPlayer(nullptr), _wasThrown(false), _isGood(false), _needsCollection(false), _glowAnimationTimer(0.0f)
 	{
 		_object = World::CreateSprite("assets/textures/mask.png");
+		_object->setTextureRect(sf::IntRect(0, 0, 38, 54));
+		_object->setOrigin(_object->getLocalBounds().width*0.5f, _object->getLocalBounds().height*0.5f);
 		_object->setPosition(position);
 
 		b2BodyDef bodyDef;
@@ -56,20 +58,17 @@ namespace FGL
 						b2Filter filter = _bodyFixture->GetFilterData();
 						filter.maskBits = 0x0001|0x0002|((_carryingPlayer->_playerID==0)?0x0008:0x0004);
 
-						if(!_isGood)
+						if(_isGood)
 						{
-							_object->setColor(sf::Color::Red);
-						}
-						else
-						{
-							_object->setColor(sf::Color::Green);
 							filter.maskBits |= 0x0010;
+							_glowAnimationTimer = 6.0f;
 						}
 
 						_bodyFixture->SetFilterData(filter);
 					}
 					else
 					{
+						_atSpawn = false;
 						PlayerEntity *player = (PlayerEntity*)otherFixture->GetUserData();
 						player->Kill();
 						_explosionTimer = 0.0f;
@@ -114,6 +113,23 @@ namespace FGL
 		if(!_atSpawn && !_isGood)
 		{
 			_explosionTimer -= timeStep;
+		}
+
+		if(!_atSpawn)
+		{
+			_glowAnimationTimer += timeStep*10.0f;
+			if(!_isGood)
+			{
+				if(_glowAnimationTimer > 5.5f)
+					_glowAnimationTimer = 5.5f;
+			}
+			else
+			{
+				if(_glowAnimationTimer > 10.5f)
+					_glowAnimationTimer = 10.5f;
+			}
+
+			_object->setTextureRect(sf::IntRect(38*(int)_glowAnimationTimer, 0, 38, 54));
 		}
 
 		if(_object && _body)

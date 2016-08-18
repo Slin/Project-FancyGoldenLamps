@@ -10,10 +10,9 @@ namespace FGL
 	{
 		_object = new sf::Sprite();
 		_object->setTexture(*TexturePool::GetInstance()->GetTexture("assets/textures/explosion.png"));
-		_object->setTextureRect(sf::IntRect(0, 0, 118, 118));
+		_object->setTextureRect(sf::IntRect(0, 0, 500, 550));
 		_object->setOrigin(_object->getLocalBounds().width*0.5f, _object->getLocalBounds().height*0.5f);
 		_object->setPosition(position);
-		_object->setScale(5.0f, 5.0f);
 	}
 
 	ExplosionEntity::~ExplosionEntity()
@@ -23,8 +22,8 @@ namespace FGL
 
 	void ExplosionEntity::Update(float timeStep)
 	{
-		_animationTimer += timeStep*1.0f;
-		_object->setTextureRect(sf::IntRect(((int)_animationTimer)*118, 0, 118, 118));
+		_animationTimer += timeStep*10.0f;
+		_object->setTextureRect(sf::IntRect(((int)_animationTimer)*500, 0, 500, 550));
 
 		if(_animationTimer >= 6.0f)
 			delete this;

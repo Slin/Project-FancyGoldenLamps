@@ -19,7 +19,7 @@ set(SOURCE_FILES
         source/TexturePool.cpp
         source/TexturePool.h
         source/SoundPool.cpp
-        source/SoundPool.h source/BoardEntity.cpp source/BoardEntity.h source/PlayerEntity.cpp source/PlayerEntity.h source/MaskEntity.cpp source/MaskEntity.h source/MaskSpawner.cpp source/MaskSpawner.h source/MaskSink.cpp source/MaskSink.h source/IngameUI.cpp source/IngameUI.h source/ExplosionEntity.cpp source/ExplosionEntity.h)
+        source/SoundPool.h source/BoardEntity.cpp source/BoardEntity.h source/PlayerEntity.cpp source/PlayerEntity.h source/MaskEntity.cpp source/MaskEntity.h source/MaskSpawner.cpp source/MaskSpawner.h source/MaskSink.cpp source/MaskSink.h source/IngameUI.cpp source/IngameUI.h source/ExplosionEntity.cpp source/ExplosionEntity.h source/StartMenu.cpp source/StartMenu.h)
 
 add_executable(${EXECUTABLE_NAME} ${SOURCE_FILES})
 

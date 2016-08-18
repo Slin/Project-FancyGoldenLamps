@@ -4,10 +4,12 @@
 #endif
 #endif
 
+#include <ctime>
 #include "World.h"
 
 int main(int argc, char* argv[])
 {
+	srand(time(NULL));
 	FGL::World::GetInstance()->Loop();
 	return 0;
 }
