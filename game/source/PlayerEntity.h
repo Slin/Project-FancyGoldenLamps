@@ -12,7 +12,7 @@ namespace FGL
 	class PlayerEntity : public Entity
 	{
 	public:
-		PlayerEntity(int id);
+		PlayerEntity(int id, sf::Vector2f position);
 		~PlayerEntity();
 
 		void Update(float timeStep);
@@ -21,6 +21,7 @@ namespace FGL
 		bool IsGrounded();
 
 		void Throw();
+		void Kill();
 
 	private:
 		sf::Sprite *_object;
@@ -28,6 +29,7 @@ namespace FGL
 		b2Fixture *_boxFixture;
 
 		int _playerID;
+		sf::Vector2f _spawnPosition;
 
 		int _throwTimer;
 		int _jumpTimer;

@@ -59,8 +59,8 @@ namespace FGL
 		Reset();
 
 		new BoardEntity();
-		new PlayerEntity(0);
-		new PlayerEntity(1);
+		new PlayerEntity(0, sf::Vector2f(0.0f, 0.0f));
+		new PlayerEntity(1, sf::Vector2f(0.0f, 0.0f));
 	}
 
 	void World::Reset()
@@ -117,7 +117,7 @@ namespace FGL
 			if(counter >= 10)
 				time = sf::Time::Zero;
 
-			_window->clear(sf::Color::Black);
+			_window->clear(sf::Color::White);
 			EntityManager::GetInstance()->Draw(_window);
 
 			_window->display();

@@ -9,10 +9,10 @@
 
 namespace FGL
 {
-	PlayerEntity::PlayerEntity(int id) : _throwTimer(100), _playerID(id), _jumpTimer(100)
+	PlayerEntity::PlayerEntity(int id, sf::Vector2f position) : _throwTimer(100), _playerID(id), _jumpTimer(100), _spawnPosition(position)
 	{
-		_object = World::CreateSprite("assets/textures/player.png");
-		_object->move(0.0f, -64.0f);
+		_object = World::CreateSprite("assets/textures/player2.png");
+		_object->move(position);
 
 		_object->setColor(((id==0)?sf::Color::Green:sf::Color::Red));
 
@@ -27,8 +27,9 @@ namespace FGL
 		fixtureDef.shape = &dynamicBox;
 		fixtureDef.density = 1.0f;
 		fixtureDef.friction = 10.0f;
-		fixtureDef.filter.categoryBits = 0x0002;
-		fixtureDef.filter.maskBits = 0x0001|0x0002;
+		fixtureDef.filter.categoryBits = ((id==0)?0x0004:0x0008);
+		fixtureDef.filter.maskBits = 0x0001|0x0002|0x0004|0x0008;
+		fixtureDef.userData = (void*)this;
 		_boxFixture = _body->CreateFixture(&fixtureDef);
 		_body->SetFixedRotation(true);
 		_body->SetBullet(true);
@@ -154,6 +155,11 @@ namespace FGL
 		}
 
 		sf::Vector2f sfDirection(direction.x, direction.y-0.3f);
-		mask->Throw(sfDirection*0.2f);
+		mask->Throw(_playerID, sfDirection*0.2f);
+	}
+
+	void PlayerEntity::Kill()
+	{
+		_body->SetTransform(b2Vec2(_spawnPosition.x, _spawnPosition.y), 0.0f);
 	}
 }

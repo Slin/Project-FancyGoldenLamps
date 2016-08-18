@@ -18,12 +18,15 @@ namespace FGL
 		void Update(float timeStep);
 		void Draw(sf::RenderWindow *window);
 
-		void Throw(sf::Vector2f direction);
+		void Throw(int id, sf::Vector2f direction);
 		void Explode();
 
 	private:
+		void CheckCollisions();
+
 		sf::Sprite *_object;
 		b2Body *_body;
+		b2Fixture *_bodyFixture;
 
 		float _explosionTimer;
 	};

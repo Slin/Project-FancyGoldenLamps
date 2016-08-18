@@ -3,6 +3,7 @@
 //
 
 #include "MaskEntity.h"
+#include "PlayerEntity.h"
 
 namespace FGL
 {
@@ -23,9 +24,9 @@ namespace FGL
 		fixtureDef.density = 0.3f;
 		fixtureDef.friction = 3.0f;
 		fixtureDef.restitution = 0.5f;
-		fixtureDef.filter.categoryBits = 0x0004;
-		fixtureDef.filter.maskBits = 0x0001|0x0004;
-		_body->CreateFixture(&fixtureDef);
+		fixtureDef.filter.categoryBits = 0x0002;
+		fixtureDef.filter.maskBits = 0x0001|0x0002|0x0004|0x0008;
+		_bodyFixture = _body->CreateFixture(&fixtureDef);
 	}
 
 	MaskEntity::~MaskEntity()
@@ -33,8 +34,30 @@ namespace FGL
 		World::GetInstance()->GetPhysicsWorld()->DestroyBody(_body);
 	}
 
+	void MaskEntity::CheckCollisions()
+	{
+		b2Contact *contact = World::GetInstance()->GetPhysicsWorld()->GetContactList();
+		while(contact)
+		{
+			if(contact->IsTouching() && (contact->GetFixtureA() == _bodyFixture || contact->GetFixtureB() == _bodyFixture))
+			{
+				b2Fixture *otherFixture = ((contact->GetFixtureA() == _bodyFixture)?contact->GetFixtureB():contact->GetFixtureA());
+				if(otherFixture->GetUserData())
+				{
+					PlayerEntity *player = (PlayerEntity*)otherFixture->GetUserData();
+					player->Kill();
+					_explosionTimer = 0.0f;
+				}
+			}
+
+			contact = contact->GetNext();
+		}
+	}
+
 	void MaskEntity::Update(float timeStep)
 	{
+		CheckCollisions();
+
 		_explosionTimer -= timeStep;
 		if(_object && _body)
 		{
@@ -56,8 +79,11 @@ namespace FGL
 		}
 	}
 
-	void MaskEntity::Throw(sf::Vector2f direction)
+	void MaskEntity::Throw(int id, sf::Vector2f direction)
 	{
+		b2Filter filter = _bodyFixture->GetFilterData();
+		filter.maskBits = 0x0001|0x0002|((id==0)?0x0008:0x0004);
+		_bodyFixture->SetFilterData(filter);
 		_body->ApplyLinearImpulse(b2Vec2(direction.x, direction.y), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
 	}
 
