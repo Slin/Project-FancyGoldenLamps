@@ -80,7 +80,7 @@ namespace FGL
 			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::RAlt);
 		}
 
-		//moveDirection *= 1.0f;
+		moveDirection.x *= 0.1f;
 
 		if(fabsf(moveDirection.x) > 0.0f)
 		{
@@ -102,7 +102,7 @@ namespace FGL
 		{
 			if(_jumpTimer > 1 && isGrounded)
 			{
-				_body->ApplyLinearImpulse(b2Vec2(0.0f, -6.0f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
+				_body->ApplyLinearImpulse(b2Vec2(0.0f, -2.0f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
 			}
 			_jumpTimer = 0;
 		}

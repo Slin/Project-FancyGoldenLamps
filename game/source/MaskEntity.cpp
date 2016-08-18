@@ -6,7 +6,7 @@
 
 namespace FGL
 {
-	MaskEntity::MaskEntity(sf::Vector2f position) : _explosionTimer(1.5f)
+	MaskEntity::MaskEntity(sf::Vector2f position) : _explosionTimer(3.0f)
 	{
 		_object = World::CreateSprite("assets/textures/mask.png");
 		_object->setPosition(position);
@@ -22,6 +22,7 @@ namespace FGL
 		fixtureDef.shape = &dynamicBox;
 		fixtureDef.density = 0.3f;
 		fixtureDef.friction = 3.0f;
+		fixtureDef.restitution = 0.5f;
 		fixtureDef.filter.categoryBits = 0x0004;
 		fixtureDef.filter.maskBits = 0x0001|0x0004;
 		_body->CreateFixture(&fixtureDef);

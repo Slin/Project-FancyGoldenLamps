@@ -16,7 +16,7 @@
 #include "Entity.h"
 #include "TexturePool.h"
 
-#define WORLD_TO_BOX2D 0.01f
+#define WORLD_TO_BOX2D 0.005f
 
 namespace FGL
 {
@@ -57,10 +57,11 @@ namespace FGL
 			return object;
 		}
 
-		static b2Body *CreateStaticBoxCollider(sf::Vector2f position, sf::Vector2u size)
+		static b2Body *CreateStaticBoxCollider(sf::Vector2f position, sf::Vector2u size, float rotation = 0.0f)
 		{
 			b2BodyDef groundBodyDef;
 			groundBodyDef.position.Set(position.x*WORLD_TO_BOX2D, position.y*WORLD_TO_BOX2D);
+			groundBodyDef.angle = rotation/180.0f*3.14f;
 			b2Body *body = World::GetInstance()->GetPhysicsWorld()->CreateBody(&groundBodyDef);
 
 			b2PolygonShape box;
