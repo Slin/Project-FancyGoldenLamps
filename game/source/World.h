@@ -59,12 +59,11 @@ namespace FGL
 
 			object->setOrigin(object->getLocalBounds().width*0.5f, object->getLocalBounds().height*0.5f);
 			object->setScale(World::GetInstance()->GetScaleFactor(), World::GetInstance()->GetScaleFactor());
-			object->setPosition(World::GetInstance()->GetWindow()->getSize().x*0.5f, World::GetInstance()->GetWindow()->getSize().y*0.5f);
 
 			return object;
 		}
 
-		static b2Body *CreateStaticBoxCollider(sf::Vector2u position, sf::Vector2u size)
+		static b2Body *CreateStaticBoxCollider(sf::Vector2f position, sf::Vector2u size)
 		{
 			b2BodyDef groundBodyDef;
 			groundBodyDef.position.Set(position.x*WORLD_TO_BOX2D, position.y*WORLD_TO_BOX2D);

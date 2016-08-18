@@ -49,7 +49,7 @@ namespace FGL
 #endif
 		_window->setFramerateLimit(60);
 
-		_view = new sf::View(sf::FloatRect(0, 0, 1920, 1200));
+		_view = new sf::View(sf::FloatRect(-0.5*_window->getSize().x, -0.5*_window->getSize().y, _window->getSize().x, _window->getSize().y));
 		_window->setView(*_view);
 
 		_scaleFactor = _window->getSize().y / 1200.0f;
@@ -129,7 +129,7 @@ namespace FGL
 	{
 		if(_screenShakeTimer > 0)
 		{
-			_view->setRotation(((float)rand()*10.0f/(float)INT_MAX)-5.0f);
+			_view->setRotation(((float)rand()*6.0f/(float)INT_MAX)-3.0f);
 		}
 		else
 		{
