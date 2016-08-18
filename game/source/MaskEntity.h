@@ -9,6 +9,7 @@
 
 namespace FGL
 {
+	class PlayerEntity;
 	class MaskEntity : public Entity
 	{
 	public:
@@ -18,7 +19,9 @@ namespace FGL
 		void Update(float timeStep);
 		void Draw(sf::RenderWindow *window);
 
-		void Throw(int id, sf::Vector2f direction);
+		void MakeGood();
+
+		void Throw(sf::Vector2f direction);
 		void Explode();
 
 	private:
@@ -27,6 +30,11 @@ namespace FGL
 		sf::Sprite *_object;
 		b2Body *_body;
 		b2Fixture *_bodyFixture;
+
+		bool _atSpawn;
+		bool _isGood;
+		PlayerEntity *_carryingPlayer;
+		bool _wasThrown;
 
 		float _explosionTimer;
 	};

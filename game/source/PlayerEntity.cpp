@@ -3,13 +3,10 @@
 //
 
 #include "PlayerEntity.h"
-#include "MaskEntity.h"
-
-#include <iostream>
 
 namespace FGL
 {
-	PlayerEntity::PlayerEntity(int id, sf::Vector2f position) : _throwTimer(100), _playerID(id), _jumpTimer(100), _spawnPosition(position)
+	PlayerEntity::PlayerEntity(int id, sf::Vector2f position) : _throwTimer(100), _playerID(id), _jumpTimer(100), _spawnPosition(position), _currentMask(nullptr)
 	{
 		_object = World::CreateSprite("assets/textures/player2.png");
 		_object->move(position);
@@ -146,7 +143,9 @@ namespace FGL
 
 	void PlayerEntity::Throw()
 	{
-		MaskEntity *mask = new MaskEntity(_object->getPosition());
+		if(!_currentMask)
+			return;
+
 		b2Vec2 direction = _body->GetLinearVelocity();
 		if(direction.Length() > 1.0f)
 		{
@@ -155,11 +154,17 @@ namespace FGL
 		}
 
 		sf::Vector2f sfDirection(direction.x, direction.y-0.3f);
-		mask->Throw(_playerID, sfDirection*0.2f);
+		_currentMask->Throw(sfDirection*0.2f);
+		_currentMask = nullptr;
 	}
 
 	void PlayerEntity::Kill()
 	{
-		_body->SetTransform(b2Vec2(_spawnPosition.x, _spawnPosition.y), 0.0f);
+		if(_currentMask)
+		{
+			_currentMask->Throw(sf::Vector2f(0.0f, 0.0f));
+			_currentMask = nullptr;
+		}
+		_body->SetTransform(b2Vec2(_spawnPosition.x*WORLD_TO_BOX2D, _spawnPosition.y*WORLD_TO_BOX2D), 0.0f);
 	}
 }

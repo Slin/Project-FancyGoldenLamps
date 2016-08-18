@@ -6,6 +6,7 @@
 
 #include "BoardEntity.h"
 #include "PlayerEntity.h"
+#include "MaskSpawner.h"
 
 #if __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
@@ -59,8 +60,10 @@ namespace FGL
 		Reset();
 
 		new BoardEntity();
-		new PlayerEntity(0, sf::Vector2f(0.0f, 0.0f));
-		new PlayerEntity(1, sf::Vector2f(0.0f, 0.0f));
+		new PlayerEntity(0, sf::Vector2f(-562.0f, 537.0f));
+		new PlayerEntity(1, sf::Vector2f(562.0f, 537.0f));
+
+		_maskSpawner = new MaskSpawner();
 	}
 
 	void World::Reset()

@@ -21,6 +21,7 @@
 namespace FGL
 {
 	class BoardEntity;
+	class MaskSpawner;
 	class World
 	{
 	public:
@@ -40,6 +41,11 @@ namespace FGL
 		b2World *GetPhysicsWorld() const
 		{
 			return _physicsWorld;
+		}
+
+		MaskSpawner *GetMaskSpawner() const
+		{
+			return _maskSpawner;
 		}
 
 		static World *GetInstance();
@@ -83,6 +89,7 @@ namespace FGL
 		std::string _bundlePath;
 
 		b2World *_physicsWorld;
+		MaskSpawner *_maskSpawner;
 
 		float _screenShakeTimer;
 	};

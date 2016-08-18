@@ -4,10 +4,11 @@
 
 #include "MaskEntity.h"
 #include "PlayerEntity.h"
+#include "MaskSpawner.h"
 
 namespace FGL
 {
-	MaskEntity::MaskEntity(sf::Vector2f position) : _explosionTimer(3.0f)
+	MaskEntity::MaskEntity(sf::Vector2f position) : _explosionTimer(3.0f), _atSpawn(true), _carryingPlayer(nullptr), _wasThrown(false), _isGood(false)
 	{
 		_object = World::CreateSprite("assets/textures/mask.png");
 		_object->setPosition(position);
@@ -44,9 +45,31 @@ namespace FGL
 				b2Fixture *otherFixture = ((contact->GetFixtureA() == _bodyFixture)?contact->GetFixtureB():contact->GetFixtureA());
 				if(otherFixture->GetUserData())
 				{
-					PlayerEntity *player = (PlayerEntity*)otherFixture->GetUserData();
-					player->Kill();
-					_explosionTimer = 0.0f;
+					if((_atSpawn && !((PlayerEntity*)otherFixture->GetUserData())->_currentMask) || _isGood)
+					{
+						_wasThrown = false;
+						_atSpawn = false;
+						_carryingPlayer = (PlayerEntity*)otherFixture->GetUserData();
+						_carryingPlayer->_currentMask = this;
+
+						b2Filter filter = _bodyFixture->GetFilterData();
+						filter.maskBits = 0x0001|0x0002|((_carryingPlayer->_playerID==0)?0x0008:0x0004);
+						_bodyFixture->SetFilterData(filter);
+
+					}
+					else
+					{
+						PlayerEntity *player = (PlayerEntity*)otherFixture->GetUserData();
+						player->Kill();
+						_explosionTimer = 0.0f;
+					}
+				}
+				else
+				{
+					if(otherFixture->GetFilterData().categoryBits == 0x0002)
+					{
+						_atSpawn = false;
+					}
 				}
 			}
 
@@ -58,7 +81,30 @@ namespace FGL
 	{
 		CheckCollisions();
 
-		_explosionTimer -= timeStep;
+		if(_carryingPlayer && !_wasThrown)
+		{
+			_body->SetTransform(b2Vec2(_carryingPlayer->_body->GetPosition()), 0.0f);
+		}
+
+		if(_wasThrown && _carryingPlayer)
+		{
+			sf::Vector2f difference = _object->getPosition()-_carryingPlayer->_object->getPosition();
+			if(difference.x*difference.x+difference.y*difference.y > 20000)
+			{
+				_wasThrown = false;
+				_carryingPlayer = nullptr;
+
+				b2Filter filter = _bodyFixture->GetFilterData();
+				filter.maskBits = 0x0001|0x0002|0x0008|0x0004;
+				_bodyFixture->SetFilterData(filter);
+			}
+		}
+
+		if(!_atSpawn && !_isGood)
+		{
+			_explosionTimer -= timeStep;
+		}
+
 		if(_object && _body)
 		{
 			_object->setPosition(_body->GetPosition().x/WORLD_TO_BOX2D, _body->GetPosition().y/WORLD_TO_BOX2D);
@@ -79,16 +125,25 @@ namespace FGL
 		}
 	}
 
-	void MaskEntity::Throw(int id, sf::Vector2f direction)
+	void MaskEntity::MakeGood()
 	{
-		b2Filter filter = _bodyFixture->GetFilterData();
-		filter.maskBits = 0x0001|0x0002|((id==0)?0x0008:0x0004);
-		_bodyFixture->SetFilterData(filter);
+		_isGood = true;
+	}
+
+	void MaskEntity::Throw(sf::Vector2f direction)
+	{
+		_wasThrown = true;
 		_body->ApplyLinearImpulse(b2Vec2(direction.x, direction.y), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
 	}
 
 	void MaskEntity::Explode()
 	{
+		if(_carryingPlayer)
+		{
+			_carryingPlayer->_currentMask = nullptr;
+			_carryingPlayer->Kill();
+		}
+		World::GetInstance()->GetMaskSpawner()->RemoveMask(this);
 		World::GetInstance()->Shake();
 		delete this;
 	}

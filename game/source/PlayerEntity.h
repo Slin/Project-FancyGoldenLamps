@@ -6,12 +6,15 @@
 #define FANCYGOLDENLAMPS_PLAYERENTITY_H
 
 #include "World.h"
+#include "MaskEntity.h"
 
 namespace FGL
 {
 	class PlayerEntity : public Entity
 	{
 	public:
+		friend MaskEntity;
+
 		PlayerEntity(int id, sf::Vector2f position);
 		~PlayerEntity();
 
@@ -30,6 +33,8 @@ namespace FGL
 
 		int _playerID;
 		sf::Vector2f _spawnPosition;
+
+		MaskEntity *_currentMask;
 
 		int _throwTimer;
 		int _jumpTimer;
