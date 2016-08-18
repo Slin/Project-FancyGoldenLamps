@@ -50,9 +50,8 @@ namespace FGL
 		_window->setFramerateLimit(60);
 
 		_view = new sf::View(sf::FloatRect(-0.5*_window->getSize().x, -0.5*_window->getSize().y, _window->getSize().x, _window->getSize().y));
+		_view->zoom(1200/_window->getSize().y);
 		_window->setView(*_view);
-
-		_scaleFactor = _window->getSize().y / 1200.0f;
 	}
 
 	void World::LoadLevel()

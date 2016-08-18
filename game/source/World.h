@@ -27,11 +27,6 @@ namespace FGL
 		void Loop();
 		void Update(float timeStep);
 
-		const float GetScaleFactor() const
-		{
-			return _scaleFactor;
-		}
-
 		sf::RenderWindow *GetWindow() const
 		{
 			return _window;
@@ -58,7 +53,6 @@ namespace FGL
 			object->setTexture(*TexturePool::GetInstance()->GetTexture(file));
 
 			object->setOrigin(object->getLocalBounds().width*0.5f, object->getLocalBounds().height*0.5f);
-			object->setScale(World::GetInstance()->GetScaleFactor(), World::GetInstance()->GetScaleFactor());
 
 			return object;
 		}
