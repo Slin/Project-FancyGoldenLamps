@@ -134,7 +134,7 @@ namespace FGL
 			if(counter >= 10)
 				time = sf::Time::Zero;
 
-			_window->clear(sf::Color::White);
+			//_window->clear(sf::Color(100, 100, 100, 255));
 			EntityManager::GetInstance()->Draw(_window);
 
 			_window->display();

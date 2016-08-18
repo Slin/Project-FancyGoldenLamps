@@ -5,6 +5,7 @@
 #include "MaskEntity.h"
 #include "PlayerEntity.h"
 #include "MaskSpawner.h"
+#include "ExplosionEntity.h"
 
 namespace FGL
 {
@@ -99,7 +100,7 @@ namespace FGL
 		if(_wasThrown && _carryingPlayer)
 		{
 			sf::Vector2f difference = _object->getPosition()-_carryingPlayer->_object->getPosition();
-			if(difference.x*difference.x+difference.y*difference.y > 20000)
+			if(difference.x*difference.x+difference.y*difference.y > 40000)
 			{
 				_wasThrown = false;
 				_carryingPlayer = nullptr;
@@ -163,6 +164,8 @@ namespace FGL
 
 	void MaskEntity::Explode()
 	{
+		new ExplosionEntity(_object->getPosition());
+
 		if(_carryingPlayer)
 		{
 			_carryingPlayer->_currentMask = nullptr;

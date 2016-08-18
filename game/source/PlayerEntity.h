@@ -38,6 +38,8 @@ namespace FGL
 
 		int _throwTimer;
 		int _jumpTimer;
+
+		float _animationTimer;
 	};
 }
 

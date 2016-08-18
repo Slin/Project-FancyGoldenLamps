@@ -7,12 +7,14 @@
 
 namespace FGL
 {
-	PlayerEntity::PlayerEntity(int id, sf::Vector2f position) : _throwTimer(100), _playerID(id), _jumpTimer(100), _spawnPosition(position), _currentMask(nullptr)
+	PlayerEntity::PlayerEntity(int id, sf::Vector2f position) : _throwTimer(100), _playerID(id), _jumpTimer(100), _spawnPosition(position), _currentMask(nullptr), _animationTimer(0.0f)
 	{
-		_object = World::CreateSprite("assets/textures/player_test2.png");
+		_object = World::CreateSprite("assets/textures/player.png");
+		_object->setTextureRect(sf::IntRect(0, 0, 92, 124));
+		_object->setOrigin(_object->getLocalBounds().width*0.5f, _object->getLocalBounds().height*0.5f);
 		_object->move(position);
 
-		_object->setColor(((id==0)?sf::Color::Green:sf::Color::Red));
+		//_object->setColor(((id==0)?sf::Color::Green:sf::Color::Blue));
 
 		b2BodyDef bodyDef;
 		b2PolygonShape dynamicBox;
@@ -21,7 +23,7 @@ namespace FGL
 		bodyDef.type = b2_dynamicBody;
 		bodyDef.position.Set(_object->getPosition().x*WORLD_TO_BOX2D, _object->getPosition().y*WORLD_TO_BOX2D);
 		_body = World::GetInstance()->GetPhysicsWorld()->CreateBody(&bodyDef);
-		dynamicBox.SetAsBox(_object->getLocalBounds().width*0.5f*WORLD_TO_BOX2D, _object->getLocalBounds().height*0.5f*WORLD_TO_BOX2D);
+		dynamicBox.SetAsBox(_object->getLocalBounds().width*0.2f*WORLD_TO_BOX2D, _object->getLocalBounds().height*0.5f*WORLD_TO_BOX2D);
 		fixtureDef.shape = &dynamicBox;
 		fixtureDef.density = 1.0f;
 		fixtureDef.friction = 10.0f;
@@ -86,7 +88,7 @@ namespace FGL
 			_boxFixture->SetFriction(0.0f);
 
 			sf::Vector2f scale = _object->getScale();
-			if(scale.x*moveDirection.x > 0.0f)
+			if(scale.x*moveDirection.x < 0.0f)
 			{
 				_object->setScale(-scale.x, scale.y);
 			}
@@ -101,7 +103,7 @@ namespace FGL
 		{
 			if(_jumpTimer > 1 && isGrounded)
 			{
-				_body->ApplyLinearImpulse(b2Vec2(0.0f, -1.5f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
+				_body->ApplyLinearImpulse(b2Vec2(0.0f, -0.8f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
 			}
 			_jumpTimer = 0;
 		}
@@ -112,7 +114,7 @@ namespace FGL
 
 		if((moveDirection.x < 0.0f && _body->GetLinearVelocity().x > -3.0f) || (moveDirection.x > 0.0f && _body->GetLinearVelocity().x < 3.0f))
 		{
-			_body->ApplyLinearImpulse(b2Vec2(moveDirection.x, 0.0f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
+			_body->ApplyLinearImpulse(b2Vec2(moveDirection.x*(isGrounded?1.0f:0.5f), 0.0f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
 		}
 
 		if(_object && _body)
@@ -132,6 +134,14 @@ namespace FGL
 		else
 		{
 			_throwTimer += 1;
+		}
+
+		if(fabsf(moveDirection.x) > 0.0f)
+		{
+			_animationTimer += timeStep*8.0f;
+			if(_animationTimer >= 8.0f)
+				_animationTimer -= 8.0f;
+			_object->setTextureRect(sf::IntRect(((int)_animationTimer)*92, 0, 92, 124));
 		}
 	}
 
