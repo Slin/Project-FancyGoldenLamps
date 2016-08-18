@@ -154,7 +154,7 @@ namespace FGL
 		}
 
 		sf::Vector2f sfDirection(direction.x, direction.y-0.3f);
-		_currentMask->Throw(sfDirection*0.2f);
+		_currentMask->Throw(sfDirection*0.3f);
 		_currentMask = nullptr;
 	}
 

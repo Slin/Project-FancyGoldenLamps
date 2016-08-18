@@ -8,7 +8,7 @@
 
 namespace FGL
 {
-	MaskEntity::MaskEntity(sf::Vector2f position) : _explosionTimer(3.0f), _atSpawn(true), _carryingPlayer(nullptr), _wasThrown(false), _isGood(false)
+	MaskEntity::MaskEntity(sf::Vector2f position) : _explosionTimer(3.0f), _atSpawn(true), _carryingPlayer(nullptr), _wasThrown(false), _isGood(false), _needsCollection(false)
 	{
 		_object = World::CreateSprite("assets/textures/mask.png");
 		_object->setPosition(position);
@@ -43,7 +43,7 @@ namespace FGL
 			if(contact->IsTouching() && (contact->GetFixtureA() == _bodyFixture || contact->GetFixtureB() == _bodyFixture))
 			{
 				b2Fixture *otherFixture = ((contact->GetFixtureA() == _bodyFixture)?contact->GetFixtureB():contact->GetFixtureA());
-				if(otherFixture->GetUserData())
+				if(otherFixture->GetUserData() && (otherFixture->GetFilterData().categoryBits & (0x0004|0x0008)))
 				{
 					if((_atSpawn && !((PlayerEntity*)otherFixture->GetUserData())->_currentMask) || _isGood)
 					{
@@ -115,6 +115,16 @@ namespace FGL
 		{
 			Explode();
 		}
+
+		if(_needsCollection)
+		{
+			if(_carryingPlayer)
+			{
+				_carryingPlayer->_currentMask = nullptr;
+			}
+			World::GetInstance()->GetMaskSpawner()->RemoveMask(this);
+			delete this;
+		}
 	}
 
 	void MaskEntity::Draw(sf::RenderWindow *window)
@@ -128,6 +138,7 @@ namespace FGL
 	void MaskEntity::MakeGood()
 	{
 		_isGood = true;
+		_bodyFixture->SetUserData(this);
 	}
 
 	void MaskEntity::Throw(sf::Vector2f direction)
@@ -146,5 +157,10 @@ namespace FGL
 		World::GetInstance()->GetMaskSpawner()->RemoveMask(this);
 		World::GetInstance()->Shake();
 		delete this;
+	}
+
+	void MaskEntity::Collect()
+	{
+		_needsCollection = true;
 	}
 }

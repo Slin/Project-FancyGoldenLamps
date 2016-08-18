@@ -8,7 +8,7 @@ namespace FGL
 {
 	BoardEntity::BoardEntity()
 	{
-		_object = World::CreateSprite("assets/textures/background_test2.png");
+		_object = World::CreateSprite("assets/textures/background.png");
 
 		b2Body *body = World::CreateStaticBoxCollider(sf::Vector2f(0, 650), sf::Vector2u(1920, 100));
 		_bodies.push_back(body);

@@ -7,6 +7,7 @@
 #include "BoardEntity.h"
 #include "PlayerEntity.h"
 #include "MaskSpawner.h"
+#include "MaskSink.h"
 
 #if __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
@@ -28,7 +29,7 @@ namespace FGL
 		return _instance;
 	}
 
-	World::World() : _physicsWorld(nullptr), _screenShakeTimer(0.0f)
+	World::World() : _physicsWorld(nullptr), _screenShakeTimer(0.0f), _maskSpawner(nullptr)
 	{
 #if __APPLE__ && !(TARGET_OS_IPHONE) && NDEBUG
 		CFBundleRef bundle = CFBundleGetMainBundle();
@@ -60,6 +61,10 @@ namespace FGL
 		Reset();
 
 		new BoardEntity();
+
+		new MaskSink(sf::Vector2f(-525, 525), sf::Vector2f(150, 150));
+		new MaskSink(sf::Vector2f(525, 525), sf::Vector2f(150, 150));
+
 		new PlayerEntity(0, sf::Vector2f(-562.0f, 537.0f));
 		new PlayerEntity(1, sf::Vector2f(562.0f, 537.0f));
 
@@ -68,6 +73,12 @@ namespace FGL
 
 	void World::Reset()
 	{
+		if(_maskSpawner)
+		{
+			delete _maskSpawner;
+			_maskSpawner = nullptr;
+		}
+
 		EntityManager::GetInstance()->RemoveAllEntities();
 
 		if(_physicsWorld)

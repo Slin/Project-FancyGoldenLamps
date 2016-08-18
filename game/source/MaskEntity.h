@@ -24,6 +24,12 @@ namespace FGL
 		void Throw(sf::Vector2f direction);
 		void Explode();
 
+		void Collect();
+		const bool IsAtSpawn() const
+		{
+			return _atSpawn;
+		}
+
 	private:
 		void CheckCollisions();
 
@@ -33,6 +39,7 @@ namespace FGL
 
 		bool _atSpawn;
 		bool _isGood;
+		bool _needsCollection;
 		PlayerEntity *_carryingPlayer;
 		bool _wasThrown;
 
