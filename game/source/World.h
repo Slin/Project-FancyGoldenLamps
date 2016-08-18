@@ -56,8 +56,8 @@ namespace FGL
 
 		static World *GetInstance();
 
-		void LoadLevel();
-		void Reset();
+		void ShouldLoadLevel();
+		void ShouldLoadMenu();
 
 		static sf::Sprite *CreateSprite(const std::string &file)
 		{
@@ -87,6 +87,11 @@ namespace FGL
 
 	private:
 		World();
+
+		void Reset();
+		void LoadLevel();
+		void LoadMenu();
+
 		static World *_instance;
 
 		sf::RenderWindow *_window;
@@ -97,6 +102,9 @@ namespace FGL
 		b2World *_physicsWorld;
 		MaskSpawner *_maskSpawner;
 		IngameUI *_ingameUI;
+
+		bool _shouldLoadLevel;
+		bool _shouldLoadMenu;
 
 		float _screenShakeTimer;
 	};

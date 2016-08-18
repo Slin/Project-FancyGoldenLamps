@@ -11,7 +11,17 @@ namespace FGL
 {
 	class StartMenu : public Entity
 	{
+	public:
+		StartMenu();
+		~StartMenu();
 
+		void Update(float timeStep);
+		void Draw(sf::RenderWindow *window);
+
+	private:
+		sf::Sprite _backgroundImage;
+
+		bool _canTrigger;
 	};
 }
 

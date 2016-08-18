@@ -9,6 +9,7 @@
 #include "MaskSpawner.h"
 #include "MaskSink.h"
 #include "IngameUI.h"
+#include "StartMenu.h"
 
 #if __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
@@ -30,7 +31,7 @@ namespace FGL
 		return _instance;
 	}
 
-	World::World() : _physicsWorld(nullptr), _screenShakeTimer(0.0f), _maskSpawner(nullptr)
+	World::World() : _physicsWorld(nullptr), _screenShakeTimer(0.0f), _maskSpawner(nullptr), _shouldLoadLevel(false), _shouldLoadMenu(false)
 	{
 #if __APPLE__ && !(TARGET_OS_IPHONE) && NDEBUG
 		CFBundleRef bundle = CFBundleGetMainBundle();
@@ -55,6 +56,22 @@ namespace FGL
 		_view = new sf::View(sf::FloatRect(-0.5*_window->getSize().x, -0.5*_window->getSize().y, _window->getSize().x, _window->getSize().y));
 		_view->zoom(1200/_window->getSize().y);
 		_window->setView(*_view);
+	}
+
+	void World::ShouldLoadLevel()
+	{
+		_shouldLoadLevel = true;
+	}
+
+	void World::ShouldLoadMenu()
+	{
+		_shouldLoadMenu = true;
+	}
+
+	void World::LoadMenu()
+	{
+		Reset();
+		new StartMenu();
 	}
 
 	void World::LoadLevel()
@@ -93,7 +110,7 @@ namespace FGL
 
 	void World::Loop()
 	{
-		LoadLevel();
+		LoadMenu();
 
 		sf::Clock clock;
 		sf::Time deltaTime;
@@ -153,6 +170,18 @@ namespace FGL
 		}
 		_window->setView(*_view);
 		_screenShakeTimer -= timeStep;
+
+		if(_shouldLoadLevel)
+		{
+			LoadLevel();
+			_shouldLoadLevel = false;
+		}
+
+		if(_shouldLoadMenu)
+		{
+			LoadMenu();
+			_shouldLoadMenu = false;
+		}
 	}
 
 	void World::Shake()

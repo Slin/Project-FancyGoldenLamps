@@ -10,16 +10,16 @@ namespace FGL
 	{
 		_object = World::CreateSprite("assets/textures/background.png");
 
-		b2Body *body = World::CreateStaticBoxCollider(sf::Vector2f(0, 650), sf::Vector2u(1920, 100));
+		b2Body *body = World::CreateStaticBoxCollider(sf::Vector2f(0, 1100), sf::Vector2u(1920, 1000));
 		_bodies.push_back(body);
 
-		body = World::CreateStaticBoxCollider(sf::Vector2f(0, -650), sf::Vector2u(1920, 100));
+		body = World::CreateStaticBoxCollider(sf::Vector2f(0, -1100), sf::Vector2u(1920, 1000));
 		_bodies.push_back(body);
 
-		body = World::CreateStaticBoxCollider(sf::Vector2f(-650, 0), sf::Vector2u(100, 1080));
+		body = World::CreateStaticBoxCollider(sf::Vector2f(-1100, 0), sf::Vector2u(1000, 1080));
 		_bodies.push_back(body);
 
-		body = World::CreateStaticBoxCollider(sf::Vector2f(650, 0), sf::Vector2u(100, 1080));
+		body = World::CreateStaticBoxCollider(sf::Vector2f(1100, 0), sf::Vector2u(1000, 1080));
 		_bodies.push_back(body);
 
 

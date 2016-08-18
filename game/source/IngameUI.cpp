@@ -59,5 +59,10 @@ namespace FGL
 				break;
 			}
 		}
+
+		if(_pointsLeft > 0 || _pointsRight > 0)
+		{
+			World::GetInstance()->ShouldLoadMenu();
+		}
 	}
 }
