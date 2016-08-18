@@ -12,7 +12,7 @@ namespace FGL
 	class PlayerEntity : public Entity
 	{
 	public:
-		PlayerEntity();
+		PlayerEntity(int id);
 		~PlayerEntity();
 
 		void Update(float timeStep);
@@ -26,6 +26,8 @@ namespace FGL
 		sf::Sprite *_object;
 		b2Body *_body;
 		b2Fixture *_boxFixture;
+
+		int _playerID;
 
 		int _throwTimer;
 	};

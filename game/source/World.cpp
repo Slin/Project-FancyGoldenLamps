@@ -56,7 +56,8 @@ namespace FGL
 		Reset();
 
 		new BoardEntity();
-		new PlayerEntity();
+		new PlayerEntity(0);
+		new PlayerEntity(1);
 	}
 
 	void World::Reset()

@@ -9,7 +9,7 @@
 
 namespace FGL
 {
-	PlayerEntity::PlayerEntity() : _throwTimer(100)
+	PlayerEntity::PlayerEntity(int id) : _throwTimer(100), _playerID(id)
 	{
 		_object = World::CreateSprite("assets/textures/player.png");
 		_object->move(0.0f, -64.0f);
@@ -63,8 +63,21 @@ namespace FGL
 	void PlayerEntity::Update(float timeStep)
 	{
 		sf::Vector2f moveDirection;
-		moveDirection.x = sf::Keyboard::isKeyPressed(sf::Keyboard::D)-sf::Keyboard::isKeyPressed(sf::Keyboard::A);
-		moveDirection.y = sf::Keyboard::isKeyPressed(sf::Keyboard::W);//-sf::Keyboard::isKeyPressed(sf::Keyboard::S);
+		bool throwButton = false;
+
+		if(_playerID == 0)
+		{
+			moveDirection.x = sf::Keyboard::isKeyPressed(sf::Keyboard::D)-sf::Keyboard::isKeyPressed(sf::Keyboard::A);
+			moveDirection.y = sf::Keyboard::isKeyPressed(sf::Keyboard::W);//-sf::Keyboard::isKeyPressed(sf::Keyboard::S);
+			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt);
+		}
+		else if(_playerID == 1)
+		{
+			moveDirection.x = sf::Keyboard::isKeyPressed(sf::Keyboard::Right)-sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
+			moveDirection.y = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);//-sf::Keyboard::isKeyPressed(sf::Keyboard::S);
+			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::RAlt);
+		}
+
 		//moveDirection *= 1.0f;
 
 		if(fabsf(moveDirection.x) > 0.0f)
@@ -99,7 +112,7 @@ namespace FGL
 			_object->setRotation(_body->GetAngle()*180.0f/3.14f);
 		}
 
-		if(sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt))
+		if(throwButton)
 		{
 			if(_throwTimer > 1)
 			{
