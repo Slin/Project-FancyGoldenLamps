@@ -11,13 +11,7 @@ namespace FGL
 
 	SoundPool::SoundPool()
 	{
-		LoadSound("assets/sounds/splat_1.ogg");
-		LoadSound("assets/sounds/splat_2.ogg");
-		LoadSound("assets/sounds/splat_4.ogg");
-
-		LoadSound("assets/sounds/stab_1.ogg");
-		LoadSound("assets/sounds/stab_2.ogg");
-		LoadSound("assets/sounds/stab_3.ogg");
+		LoadSound("assets/sounds/explosion.ogg");
 	}
 
 
@@ -43,46 +37,6 @@ namespace FGL
 		return _instance;
 	}
 
-	sf::SoundBuffer *SoundPool::PlaySplat()
-	{
-		sf::SoundBuffer *buf;
-		int rnd = rand() % 3;
-		switch(rnd){
-			case 0:
-				buf=GetSound("assets/sounds/splat_1.ogg");
-				break;
-			case 1:
-				buf=GetSound("assets/sounds/splat_2.ogg");
-				break;
-			case 2:
-				buf=GetSound("assets/sounds/splat_4.ogg");
-				break;
-		}
-		return buf;
-
-	}
-	sf::SoundBuffer *SoundPool::PlayStab()
-	{
-		sf::SoundBuffer *buf;
-		int rnd = rand() % 3;
-		switch(rnd){
-			case 0:
-				buf=GetSound("assets/sounds/stab_1.ogg");
-				break;
-			case 1:
-				buf=GetSound("assets/sounds/stab_2.ogg");
-				break;
-			case 2:
-				buf=GetSound("assets/sounds/stab_3.ogg");
-				break;
-		}
-		return buf;
-	}
-
-	void SoundPool::PlayStabFail()
-	{
-
-	}
 	SoundPool::~SoundPool()
 	{
 		soundMap.clear();

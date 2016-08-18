@@ -186,6 +186,6 @@ namespace FGL
 
 	void World::Shake()
 	{
-		_screenShakeTimer = 0.13f;
+		_screenShakeTimer = 0.15f;
 	}
 }

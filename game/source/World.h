@@ -15,6 +15,7 @@
 #include "EntityManager.h"
 #include "Entity.h"
 #include "TexturePool.h"
+#include "SoundPool.h"
 
 #define WORLD_TO_BOX2D 0.005f
 

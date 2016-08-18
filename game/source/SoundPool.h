@@ -24,10 +24,6 @@ namespace FGL
 
 		static SoundPool *_instance;
 		static SoundPool *GetInstance();
-
-		sf::SoundBuffer *PlaySplat();
-		sf::SoundBuffer *PlayStab();
-		void PlayStabFail();
 	};
 }
 

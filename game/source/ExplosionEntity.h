@@ -21,6 +21,7 @@ namespace FGL
 	private:
 		sf::Sprite *_object;
 		float _animationTimer;
+		sf::Sound _sound;
 	};
 }
 

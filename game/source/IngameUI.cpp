@@ -60,7 +60,7 @@ namespace FGL
 			}
 		}
 
-		if(_pointsLeft > 0 || _pointsRight > 0)
+		if(_pointsLeft >= 20 || _pointsRight >= 20)
 		{
 			World::GetInstance()->ShouldLoadMenu();
 		}
