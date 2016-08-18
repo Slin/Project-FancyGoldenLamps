@@ -22,28 +22,53 @@ namespace FGL
 		body = World::CreateStaticBoxCollider(sf::Vector2f(650, 0), sf::Vector2u(100, 1080));
 		_bodies.push_back(body);
 
-		body = World::CreateStaticBoxCollider(sf::Vector2f(0, 562), sf::Vector2u(285, 75));
+
+
+		body = World::CreateStaticBoxCollider(sf::Vector2f(-125, 575), sf::Vector2u(50, 50));
 		_bodies.push_back(body);
 
-		body = World::CreateStaticBoxCollider(sf::Vector2f(-354, 487), sf::Vector2u(77, 226));
+		body = World::CreateStaticBoxCollider(sf::Vector2f(-425, 575), sf::Vector2u(50, 50));
 		_bodies.push_back(body);
 
-		body = World::CreateStaticBoxCollider(sf::Vector2f(354, 487), sf::Vector2u(77, 226));
+		body = World::CreateStaticBoxCollider(sf::Vector2f(-250, 325), sf::Vector2u(200, 50));
 		_bodies.push_back(body);
 
-		body = World::CreateStaticBoxCollider(sf::Vector2f(443, 200), sf::Vector2u(110, 158));
+		body = World::CreateStaticBoxCollider(sf::Vector2f(-550, 225), sf::Vector2u(100, 50));
 		_bodies.push_back(body);
 
-		body = World::CreateStaticBoxCollider(sf::Vector2f(-443, 200), sf::Vector2u(110, 158));
+		body = World::CreateStaticBoxCollider(sf::Vector2f(-350, -25), sf::Vector2u(100, 150));
 		_bodies.push_back(body);
 
-		body = World::CreateStaticBoxCollider(sf::Vector2f(0, 25), sf::Vector2u(300, 35));
+		body = World::CreateStaticBoxCollider(sf::Vector2f(-500, -375), sf::Vector2u(200, 50));
 		_bodies.push_back(body);
 
-		body = World::CreateStaticBoxCollider(sf::Vector2f(-200, 0), sf::Vector2u(150, 35), 30);
+
+		body = World::CreateStaticBoxCollider(sf::Vector2f(125, 575), sf::Vector2u(50, 50));
 		_bodies.push_back(body);
 
-		body = World::CreateStaticBoxCollider(sf::Vector2f(200, 0), sf::Vector2u(150, 35), -30);
+		body = World::CreateStaticBoxCollider(sf::Vector2f(425, 575), sf::Vector2u(50, 50));
+		_bodies.push_back(body);
+
+		body = World::CreateStaticBoxCollider(sf::Vector2f(250, 325), sf::Vector2u(200, 50));
+		_bodies.push_back(body);
+
+		body = World::CreateStaticBoxCollider(sf::Vector2f(550, 225), sf::Vector2u(100, 50));
+		_bodies.push_back(body);
+
+		body = World::CreateStaticBoxCollider(sf::Vector2f(350, -25), sf::Vector2u(100, 150));
+		_bodies.push_back(body);
+
+		body = World::CreateStaticBoxCollider(sf::Vector2f(500, -375), sf::Vector2u(200, 50));
+		_bodies.push_back(body);
+
+
+		body = World::CreateStaticBoxCollider(sf::Vector2f(0, 75), sf::Vector2u(100, 50));
+		_bodies.push_back(body);
+
+		body = World::CreateStaticBoxCollider(sf::Vector2f(0, -225), sf::Vector2u(100, 50));
+		_bodies.push_back(body);
+
+		body = World::CreateStaticBoxCollider(sf::Vector2f(0, -525), sf::Vector2u(100, 150));
 		_bodies.push_back(body);
 	}
 
