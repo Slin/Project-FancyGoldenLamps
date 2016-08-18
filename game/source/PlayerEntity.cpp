@@ -147,7 +147,13 @@ namespace FGL
 	{
 		MaskEntity *mask = new MaskEntity(_object->getPosition());
 		b2Vec2 direction = _body->GetLinearVelocity();
-		sf::Vector2f sfDirection(direction.x, direction.y);
+		if(direction.Length() > 1.0f)
+		{
+			direction.Normalize();
+			direction *= 1.0f;
+		}
+
+		sf::Vector2f sfDirection(direction.x, direction.y-0.3f);
 		mask->Throw(sfDirection*0.2f);
 	}
 }
