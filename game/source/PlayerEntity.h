@@ -20,10 +20,14 @@ namespace FGL
 
 		bool IsGrounded();
 
+		void Throw();
+
 	private:
 		sf::Sprite *_object;
 		b2Body *_body;
 		b2Fixture *_boxFixture;
+
+		int _throwTimer;
 	};
 }
 

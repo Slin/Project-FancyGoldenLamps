@@ -47,6 +47,7 @@ namespace FGL
 #else
 		_window = new sf::RenderWindow(sf::VideoMode(1920, 1200), "Fancy Golden Lamps");
 #endif
+		_window->setFramerateLimit(60);
 		_scaleFactor = _window->getSize().y / 1200.0f;
 	}
 
@@ -98,18 +99,18 @@ namespace FGL
 			time += deltaTime;
 			clock.restart();
 			int counter = 0;
-			while(time.asSeconds() > 1.0f / 60.0f && counter < 5)
+			while(time.asSeconds() > 1.0f / 60.0f && counter < 10)
 			{
 				_physicsWorld->Step(1.0f / 60.0f, 2, 1);
 
 				EntityManager::GetInstance()->Update(1.0f / 60.0f);
-				Update(deltaTime.asSeconds());
+				Update(1.0f / 60.0f);
 
 				time -= sf::seconds(1.0f / 60.0f);
 				counter += 1;
 			}
 
-			if(counter >= 5)
+			if(counter >= 10)
 				time = sf::Time::Zero;
 
 			_window->clear(sf::Color::Black);
