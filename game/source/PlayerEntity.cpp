@@ -100,7 +100,7 @@ namespace FGL
 		{
 			if(_jumpTimer > 1 && isGrounded)
 			{
-				_body->ApplyLinearImpulse(b2Vec2(0.0f, -2.0f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
+				_body->ApplyLinearImpulse(b2Vec2(0.0f, -1.5f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
 			}
 			_jumpTimer = 0;
 		}
