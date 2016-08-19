@@ -20,7 +20,7 @@ namespace FGL
 		_lightEnter.setTexture(*TexturePool::GetInstance()->GetTexture("assets/textures/menu_enter.png"));
 		_lightEnter.setOrigin(_lightEnter.getLocalBounds().width*0.5f, _lightEnter.getLocalBounds().height*0.5f);
 
-		_music.openFromFile("assets/sounds/menu.ogg");
+		_music.openFromFile(World::GetInstance()->GetBundlePath()+"assets/sounds/menu.ogg");
 		_music.play();
 		_music.setPlayingOffset(World::GetInstance()->GetMusicPosition());
 		_music.setLoop(true);

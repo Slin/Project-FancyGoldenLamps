@@ -11,7 +11,7 @@ namespace FGL
 		_backgroundImage.setTexture(*TexturePool::GetInstance()->GetTexture("assets/textures/end_screen.png"));
 		_backgroundImage.setOrigin(_backgroundImage.getLocalBounds().width*0.5f, _backgroundImage.getLocalBounds().height*0.5f);
 
-		_music.openFromFile("assets/sounds/menu.ogg");
+		_music.openFromFile(World::GetInstance()->GetBundlePath()+"assets/sounds/menu.ogg");
 		_music.play();
 		_music.setPlayingOffset(World::GetInstance()->GetMusicPosition());
 		_music.setLoop(true);

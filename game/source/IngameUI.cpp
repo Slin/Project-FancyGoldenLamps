@@ -8,7 +8,7 @@ namespace FGL
 {
 	IngameUI::IngameUI() : _pointsLeft(0), _pointsRight(0)
 	{
-		_font.loadFromFile("assets/fonts/dangerflight.ttf");
+		_font.loadFromFile(World::GetInstance()->GetBundlePath()+"assets/fonts/dangerflight.ttf");
 
 		_scoreLeft.setFont(_font);
 		_scoreLeft.setCharacterSize(80);
@@ -22,7 +22,7 @@ namespace FGL
 		_scoreRight.setString("0");
 		_scoreRight.setPosition(350-_scoreRight.getLocalBounds().width*0.5, 450.0f);
 
-		_music.openFromFile("assets/sounds/game.ogg");
+		_music.openFromFile(World::GetInstance()->GetBundlePath()+"assets/sounds/game.ogg");
 		_music.play();
 		_music.setPlayingOffset(World::GetInstance()->GetMusicPosition());
 		_music.setLoop(true);
