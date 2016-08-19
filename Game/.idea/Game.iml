@@ -8,6 +8,7 @@
       <sourceFolder url="file://$MODULE_DIR$/source/MaskEntity.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/TexturePool.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/ParticleEmitter.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/main.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/SoundPool.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/EntityManager.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/BoardEntity.h" isTestSource="false" />
@@ -17,11 +18,12 @@
       <sourceFolder url="file://$MODULE_DIR$/source/StartMenu.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/BlackFadeEntity.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/IngameUI.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/source/ParticleEmitter.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/ControlMenu.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskEntity.h" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/source/MaskSpawner.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/ControlMenu.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/SoundPool.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskSink.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/IngameUI.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/BlackFadeEntity.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskSink.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/World.h" isTestSource="false" />
@@ -31,8 +33,8 @@
       <sourceFolder url="file://$MODULE_DIR$/source/PlayerEntity.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/ExplosionEntity.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/World.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/source/main.cpp" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/source/IngameUI.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/ParticleEmitter.cpp" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/MaskSpawner.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/EndMenu.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/ExplosionEntity.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskSpawner.h" isTestSource="false" />
