@@ -12,13 +12,22 @@ namespace FGL
 
 		_scoreLeft.setFont(_font);
 		_scoreLeft.setCharacterSize(80);
+
+#if WIN32
+		_scoreLeft.setColor(sf::Color::Black);
+#else
 		_scoreLeft.setFillColor(sf::Color::Black);
+#endif
 		_scoreLeft.setString("0");
 		_scoreLeft.setPosition(-350-_scoreLeft.getLocalBounds().width*0.5, 450.0f);
 
 		_scoreRight.setFont(_font);
 		_scoreRight.setCharacterSize(80);
+#if WIN32
+		_scoreRight.setColor(sf::Color::Black);
+#else
 		_scoreRight.setFillColor(sf::Color::Black);
+#endif
 		_scoreRight.setString("0");
 		_scoreRight.setPosition(350-_scoreRight.getLocalBounds().width*0.5, 450.0f);
 

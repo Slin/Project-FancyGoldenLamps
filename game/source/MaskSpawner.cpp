@@ -18,7 +18,7 @@ namespace FGL
 			_masks[i] = new MaskEntity(_spawnPositions[i]);
 		}
 
-		_goodMaskIndex = (int)(((float)random()/(float)INT_MAX)*4.0f);
+		_goodMaskIndex = (int)(((float)rand()/(float)INT_MAX)*4.0f);
 		_masks[_goodMaskIndex]->MakeGood();
 	}
 
@@ -37,7 +37,7 @@ namespace FGL
 
 				if(i == _goodMaskIndex)
 				{
-					_goodMaskIndex = (int)(((float)random()/(float)INT_MAX)*4.0f);
+					_goodMaskIndex = (int)(((float)rand()/(float)INT_MAX)*4.0f);
 					while(!_masks[_goodMaskIndex]->IsAtSpawn())
 					{
 						_goodMaskIndex += 1;
