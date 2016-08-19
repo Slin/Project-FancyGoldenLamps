@@ -74,13 +74,13 @@ namespace FGL
 		{
 			moveDirection.x = sf::Keyboard::isKeyPressed(sf::Keyboard::D)-sf::Keyboard::isKeyPressed(sf::Keyboard::A);
 			moveDirection.y = sf::Keyboard::isKeyPressed(sf::Keyboard::W);
-			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::LAlt);
+			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::LShift);
 		}
 		else if(_playerID == 1)
 		{
 			moveDirection.x = sf::Keyboard::isKeyPressed(sf::Keyboard::Right)-sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
 			moveDirection.y = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
-			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::RAlt);
+			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
 		}
 
 		moveDirection.x *= 0.07f;
