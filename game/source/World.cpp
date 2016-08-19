@@ -50,7 +50,7 @@ namespace FGL
 #if defined(FULLSCREEN)
 		_window = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Fancy Golden Lamps", sf::Style::Fullscreen);
 #else
-		_window = new sf::RenderWindow(sf::VideoMode(1920, 1200), "Fancy Golden Lamps");
+		_window = new sf::RenderWindow(sf::VideoMode(800, 600), "Fancy Golden Lamps");
 #endif
 		_window->setFramerateLimit(60);
 
