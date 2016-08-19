@@ -16,7 +16,7 @@
 #include <CoreFoundation/CoreFoundation.h>
 #endif
 
-//#define FULLSCREEN
+#define FULLSCREEN
 
 namespace FGL
 {
@@ -50,13 +50,14 @@ namespace FGL
 #if defined(FULLSCREEN)
 		_window = new sf::RenderWindow(sf::VideoMode::getDesktopMode(), "Fancy Golden Lamps", sf::Style::Fullscreen);
 #else
-		_window = new sf::RenderWindow(sf::VideoMode(800, 600), "Fancy Golden Lamps");
+		_window = new sf::RenderWindow(sf::VideoMode(1920, 1200), "Fancy Golden Lamps");
 #endif
 		_window->setFramerateLimit(60);
 
 		_view = new sf::View(sf::FloatRect(-0.5*_window->getSize().x, -0.5*_window->getSize().y, _window->getSize().x, _window->getSize().y));
-		_view->zoom(1200/_window->getSize().y);
+		_view->zoom(1200.0f/_window->getSize().y);
 		_window->setView(*_view);
+		_window->clear(sf::Color::Black);
 	}
 
 	void World::ShouldLoadLevel()
@@ -163,7 +164,7 @@ namespace FGL
 			if(counter >= 10)
 				time = sf::Time::Zero;
 
-			//_window->clear(sf::Color(100, 100, 100, 255));
+			_window->clear(sf::Color(100, 100, 100, 255));
 			EntityManager::GetInstance()->Draw(_window);
 
 			_window->display();
