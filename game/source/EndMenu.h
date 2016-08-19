@@ -12,7 +12,7 @@ namespace FGL
 	class EndMenu : public Entity
 	{
 	public:
-		EndMenu();
+		EndMenu(int winner);
 		~EndMenu();
 
 		void Update(float timeStep);
@@ -20,10 +20,13 @@ namespace FGL
 
 	private:
 		sf::Sprite _backgroundImage;
+		sf::Sprite _backgroundLight;
+		sf::Sprite _playerImage;
 		sf::Music _music;
 		sf::Clock _clock;
 
 		bool _canTrigger;
+		float _animationTimer;
 	};
 }
 

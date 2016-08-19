@@ -32,7 +32,7 @@ namespace FGL
 		return _instance;
 	}
 
-	World::World() : _physicsWorld(nullptr), _screenShakeTimer(0.0f), _maskSpawner(nullptr), _shouldLoadLevel(false), _shouldLoadMenu(false), _shouldLoadEnd(false)
+	World::World() : _physicsWorld(nullptr), _screenShakeTimer(0.0f), _maskSpawner(nullptr), _shouldLoadLevel(false), _shouldLoadMenu(false), _shouldLoadEnd(-1)
 	{
 #if __APPLE__ && !(TARGET_OS_IPHONE) && NDEBUG
 		CFBundleRef bundle = CFBundleGetMainBundle();
@@ -70,9 +70,9 @@ namespace FGL
 		_shouldLoadMenu = true;
 	}
 
-	void World::ShouldLoadEnd()
+	void World::ShouldLoadEnd(int winner)
 	{
-		_shouldLoadEnd = true;
+		_shouldLoadEnd = winner;
 	}
 
 	void World::LoadMenu()
@@ -81,10 +81,10 @@ namespace FGL
 		new StartMenu();
 	}
 
-	void World::LoadEnd()
+	void World::LoadEnd(int winner)
 	{
 		Reset();
-		new EndMenu();
+		new EndMenu(winner);
 	}
 
 	void World::LoadLevel()
@@ -196,10 +196,10 @@ namespace FGL
 			_shouldLoadMenu = false;
 		}
 
-		if(_shouldLoadEnd)
+		if(_shouldLoadEnd >= 0)
 		{
-			LoadEnd();
-			_shouldLoadEnd = false;
+			LoadEnd(_shouldLoadEnd);
+			_shouldLoadEnd = -1;
 		}
 	}
 

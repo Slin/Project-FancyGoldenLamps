@@ -59,7 +59,7 @@ namespace FGL
 
 		void ShouldLoadLevel();
 		void ShouldLoadMenu();
-		void ShouldLoadEnd();
+		void ShouldLoadEnd(int winner);
 
 		void SetMusicPosition(sf::Time position)
 		{
@@ -103,7 +103,7 @@ namespace FGL
 		void Reset();
 		void LoadLevel();
 		void LoadMenu();
-		void LoadEnd();
+		void LoadEnd(int winner);
 
 		static World *_instance;
 
@@ -119,7 +119,7 @@ namespace FGL
 
 		bool _shouldLoadLevel;
 		bool _shouldLoadMenu;
-		bool _shouldLoadEnd;
+		int _shouldLoadEnd;
 
 		float _screenShakeTimer;
 	};

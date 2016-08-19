@@ -18,6 +18,9 @@ namespace FGL
 		_lightRight.setOrigin(_lightRight.getLocalBounds().width*0.5f, _lightRight.getLocalBounds().height*0.5f);
 		_lightRight.setPosition(538, 506);
 
+		_lightBig.setTexture(*TexturePool::GetInstance()->GetTexture("assets/textures/game_biglight.png"));
+		_lightBig.setOrigin(_lightBig.getLocalBounds().width*0.5f, _lightBig.getLocalBounds().height*0.5f);
+
 		b2Body *body = World::CreateStaticBoxCollider(sf::Vector2f(0, 1100), sf::Vector2u(1920, 1000));
 		_bodies.push_back(body);
 
@@ -96,6 +99,15 @@ namespace FGL
 
 		_lightLeft.setColor(sf::Color(255, 255, 255, 128+127*(sin(_timer*3.0f)*0.5f+0.5f)));
 		_lightRight.setColor(sf::Color(255, 255, 255, 128+127*(sin(_timer*3.0f)*0.5f+0.5f)));
+
+		if(rand()%100 < 5)
+		{
+			_lightBig.setColor(sf::Color(255, 255, 255, 255));
+		}
+		else
+		{
+			_lightBig.setColor(sf::Color(255, 255, 255, 0));
+		}
 	}
 
 	void BoardEntity::Draw(sf::RenderWindow *window)
@@ -107,5 +119,6 @@ namespace FGL
 		renderStates.blendMode = sf::BlendAdd;
 		window->draw(_lightLeft, renderStates);
 		window->draw(_lightRight, renderStates);
+		window->draw(_lightBig, renderStates);
 	}
 }

@@ -22,6 +22,7 @@ namespace FGL
 		sf::Sprite *_object;
 		sf::Sprite _lightLeft;
 		sf::Sprite _lightRight;
+		sf::Sprite _lightBig;
 
 		std::vector<b2Body*> _bodies;
 
