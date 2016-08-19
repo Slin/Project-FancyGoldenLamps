@@ -37,7 +37,7 @@ namespace FGL
 		{
 			if(sf::Keyboard::isKeyPressed((sf::Keyboard::Key)i) && i != sf::Keyboard::LSystem)
 			{
-				if(_canTrigger && deltaTime.asSeconds() > 3.0f)
+				if(_canTrigger && deltaTime.asSeconds() > 1.0f)
 				{
 					World::GetInstance()->ShouldLoadMenu();
 				}

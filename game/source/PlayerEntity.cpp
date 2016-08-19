@@ -82,7 +82,7 @@ namespace FGL
 		{
 			moveDirection.x = sf::Keyboard::isKeyPressed(sf::Keyboard::Right)-sf::Keyboard::isKeyPressed(sf::Keyboard::Left);
 			moveDirection.y = sf::Keyboard::isKeyPressed(sf::Keyboard::Up);
-			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::RAlt);
+			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::Space);
 		}
 
 		moveDirection.x *= 0.07f;

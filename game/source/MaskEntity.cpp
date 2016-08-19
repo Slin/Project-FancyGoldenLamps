@@ -39,6 +39,10 @@ namespace FGL
 	{
 		World::GetInstance()->GetPhysicsWorld()->DestroyBody(_body);
 		_body = nullptr;
+		if(_carryingPlayer)
+		{
+			_carryingPlayer->_currentMask = nullptr;
+		}
 	}
 
 	void MaskEntity::CheckCollisions()
