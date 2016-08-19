@@ -41,9 +41,9 @@ namespace FGL
 			_animationTimer -= 8.0f;
 		_playerImage.setTextureRect(sf::IntRect(((int)_animationTimer)*92, 0, 92, 124));
 
-		for(int i = 0; i < sf::Keyboard::KeyCount; i++)
+		for(int i = 0; i < sf::Keyboard::F1; i++)
 		{
-			if(sf::Keyboard::isKeyPressed((sf::Keyboard::Key)i))
+			if(sf::Keyboard::isKeyPressed((sf::Keyboard::Key)i) && i != sf::Keyboard::LSystem)
 			{
 				if(_canTrigger && deltaTime.asSeconds() > 3.0f)
 				{

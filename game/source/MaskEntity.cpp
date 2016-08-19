@@ -6,10 +6,12 @@
 #include "PlayerEntity.h"
 #include "MaskSpawner.h"
 #include "ExplosionEntity.h"
+#include <iostream>
 
 namespace FGL
 {
-	MaskEntity::MaskEntity(sf::Vector2f position) : _explosionTimer(3.0f), _atSpawn(true), _carryingPlayer(nullptr), _wasThrown(false), _isGood(false), _needsCollection(false), _glowAnimationTimer(0.0f)
+	MaskEntity::MaskEntity(sf::Vector2f position) : _explosionTimer(3.0f), _atSpawn(true), _carryingPlayer(nullptr), _wasThrown(false), _isGood(false), _needsCollection(false), _glowAnimationTimer(0.0f), _body(
+			nullptr)
 	{
 		_object = World::CreateSprite("assets/textures/mask.png");
 		_object->setTextureRect(sf::IntRect(0, 0, 38, 54));
@@ -23,9 +25,9 @@ namespace FGL
 		bodyDef.type = b2_dynamicBody;
 		bodyDef.position.Set(_object->getPosition().x*WORLD_TO_BOX2D, _object->getPosition().y*WORLD_TO_BOX2D);
 		_body = World::GetInstance()->GetPhysicsWorld()->CreateBody(&bodyDef);
-		dynamicBox.SetAsBox(_object->getLocalBounds().width*0.5f*WORLD_TO_BOX2D, _object->getLocalBounds().height*0.5f*WORLD_TO_BOX2D);
+		dynamicBox.SetAsBox(30.0f*0.5f*WORLD_TO_BOX2D, 38.0f*0.5f*WORLD_TO_BOX2D);
 		fixtureDef.shape = &dynamicBox;
-		fixtureDef.density = 0.3f;
+		fixtureDef.density = 0.4f;
 		fixtureDef.friction = 3.0f;
 		fixtureDef.restitution = 0.5f;
 		fixtureDef.filter.categoryBits = 0x0002;
@@ -36,6 +38,7 @@ namespace FGL
 	MaskEntity::~MaskEntity()
 	{
 		World::GetInstance()->GetPhysicsWorld()->DestroyBody(_body);
+		_body = nullptr;
 	}
 
 	void MaskEntity::CheckCollisions()
@@ -93,13 +96,14 @@ namespace FGL
 
 		if(_carryingPlayer && !_wasThrown)
 		{
-			_body->SetTransform(b2Vec2(_carryingPlayer->_body->GetPosition()), 0.0f);
+			b2Vec2 position = _carryingPlayer->_body->GetPosition();
+			_body->SetTransform(b2Vec2(position.x, position.y-35.0f*WORLD_TO_BOX2D), 0.0f);
 		}
 
 		if(_wasThrown && _carryingPlayer)
 		{
 			sf::Vector2f difference = _object->getPosition()-_carryingPlayer->_object->getPosition();
-			if(difference.x*difference.x+difference.y*difference.y > 40000)
+			if(difference.x*difference.x+difference.y*difference.y > 10000)
 			{
 				_wasThrown = false;
 				_carryingPlayer = nullptr;
@@ -175,7 +179,7 @@ namespace FGL
 	void MaskEntity::Throw(sf::Vector2f direction)
 	{
 		_wasThrown = true;
-		_body->ApplyLinearImpulse(b2Vec2(direction.x, direction.y), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
+		_body->ApplyLinearImpulse(b2Vec2(direction.x, direction.y), _body->GetPosition(), true);
 	}
 
 	void MaskEntity::Explode()

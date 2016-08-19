@@ -152,7 +152,7 @@ namespace FGL
 			int counter = 0;
 			while(time.asSeconds() > 1.0f / 60.0f && counter < 10)
 			{
-				_physicsWorld->Step(1.0f / 60.0f, 2, 1);
+				_physicsWorld->Step(1.0f / 60.0f, 10, 5);
 
 				EntityManager::GetInstance()->Update(1.0f / 60.0f);
 				Update(1.0f / 60.0f);

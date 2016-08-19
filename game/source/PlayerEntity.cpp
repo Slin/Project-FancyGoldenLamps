@@ -5,6 +5,8 @@
 #include "PlayerEntity.h"
 #include "IngameUI.h"
 
+#include <iostream>
+
 namespace FGL
 {
 	PlayerEntity::PlayerEntity(int id, sf::Vector2f position) : _throwTimer(100), _playerID(id), _jumpTimer(100), _spawnPosition(position), _currentMask(nullptr), _animationTimer(0.0f)
@@ -116,7 +118,7 @@ namespace FGL
 			_jumpTimer += 1;
 		}
 
-		if((moveDirection.x < 0.0f && _body->GetLinearVelocity().x > -3.0f) || (moveDirection.x > 0.0f && _body->GetLinearVelocity().x < 3.0f))
+		if((moveDirection.x < 0.0f && _body->GetLinearVelocity().x > -2.0f) || (moveDirection.x > 0.0f && _body->GetLinearVelocity().x < 2.0f))
 		{
 			_body->ApplyLinearImpulse(b2Vec2(moveDirection.x*(isGrounded?1.0f:0.5f), 0.0f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
 		}
@@ -162,14 +164,18 @@ namespace FGL
 			return;
 
 		b2Vec2 direction = _body->GetLinearVelocity();
-		if(direction.Length() > 1.0f)
+
+		if(direction.Length() > 0.7f)
 		{
 			direction.Normalize();
-			direction *= 1.0f;
+			direction *= 0.7f;
 		}
 
-		sf::Vector2f sfDirection(direction.x, direction.y-0.3f);
-		_currentMask->Throw(sfDirection*0.3f);
+		direction *= 0.3f;
+
+		sf::Vector2f sfDirection(direction.x, direction.y-0.05f);
+
+		_currentMask->Throw(sfDirection);
 		_currentMask = nullptr;
 	}
 
