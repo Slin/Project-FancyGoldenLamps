@@ -15,6 +15,7 @@ namespace FGL
 		_object->setPosition(position);
 
 		_sound.setBuffer(*SoundPool::GetInstance()->GetSound("assets/sounds/explosion.ogg"));
+		_sound.setPitch(0.75f+(rand()/(float)INT_MAX)*0.5f);
 		_sound.play();
 	}
 

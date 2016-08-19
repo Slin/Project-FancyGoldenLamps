@@ -20,6 +20,7 @@ namespace FGL
 
 	private:
 		sf::Sprite _backgroundImage;
+		sf::Music _music;
 
 		bool _canTrigger;
 	};

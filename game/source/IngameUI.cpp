@@ -21,6 +21,11 @@ namespace FGL
 		_scoreRight.setFillColor(sf::Color::Black);
 		_scoreRight.setString("0");
 		_scoreRight.setPosition(350-_scoreRight.getLocalBounds().width*0.5, 450.0f);
+
+		_music.openFromFile("assets/sounds/game.ogg");
+		_music.play();
+		_music.setPlayingOffset(World::GetInstance()->GetMusicPosition());
+		_music.setLoop(true);
 	}
 
 	IngameUI::~IngameUI()
@@ -60,8 +65,9 @@ namespace FGL
 			}
 		}
 
-		if(_pointsLeft >= 20 || _pointsRight >= 20)
+		if(_pointsLeft >= 1 || _pointsRight >= 1)
 		{
+			World::GetInstance()->SetMusicPosition(_music.getPlayingOffset());
 			World::GetInstance()->ShouldLoadMenu();
 		}
 	}

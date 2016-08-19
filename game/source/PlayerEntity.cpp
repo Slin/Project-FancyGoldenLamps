@@ -33,6 +33,8 @@ namespace FGL
 		_boxFixture = _body->CreateFixture(&fixtureDef);
 		_body->SetFixedRotation(true);
 		_body->SetBullet(true);
+
+		_sound.setBuffer(*SoundPool::GetInstance()->GetSound("assets/sounds/jump.ogg"));
 	}
 
 	PlayerEntity::~PlayerEntity()
@@ -104,6 +106,8 @@ namespace FGL
 			if(_jumpTimer > 1 && isGrounded)
 			{
 				_body->ApplyLinearImpulse(b2Vec2(0.0f, -0.8f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
+				_sound.setPitch(0.75f+(rand()/(float)INT_MAX)*0.5f);
+				_sound.play();
 			}
 			_jumpTimer = 0;
 		}

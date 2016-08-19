@@ -60,6 +60,16 @@ namespace FGL
 		void ShouldLoadLevel();
 		void ShouldLoadMenu();
 
+		void SetMusicPosition(sf::Time position)
+		{
+			_musicPosition = position;
+		}
+
+		const sf::Time GetMusicPosition() const
+		{
+			return _musicPosition;
+		}
+
 		static sf::Sprite *CreateSprite(const std::string &file)
 		{
 			sf::Sprite *object = new sf::Sprite();
@@ -103,6 +113,7 @@ namespace FGL
 		b2World *_physicsWorld;
 		MaskSpawner *_maskSpawner;
 		IngameUI *_ingameUI;
+		sf::Time _musicPosition;
 
 		bool _shouldLoadLevel;
 		bool _shouldLoadMenu;

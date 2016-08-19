@@ -31,6 +31,8 @@ namespace FGL
 		b2Body *_body;
 		b2Fixture *_boxFixture;
 
+		sf::Sound _sound;
+
 		int _playerID;
 		sf::Vector2f _spawnPosition;
 

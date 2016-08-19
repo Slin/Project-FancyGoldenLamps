@@ -25,6 +25,8 @@ namespace FGL
 		sf::Text _scoreLeft;
 		sf::Text _scoreRight;
 
+		sf::Music _music;
+
 		int _pointsLeft;
 		int _pointsRight;
 	};
