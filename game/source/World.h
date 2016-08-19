@@ -104,6 +104,7 @@ namespace FGL
 		void Reset();
 		void LoadLevel();
 		void LoadMenu();
+		void LoadControls();
 		void LoadEnd(int winner);
 
 		static World *_instance;

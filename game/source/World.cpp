@@ -12,6 +12,7 @@
 #include "StartMenu.h"
 #include "EndMenu.h"
 #include "BlackFadeEntity.h"
+#include "ControlMenu.h"
 
 #if __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
@@ -112,6 +113,13 @@ namespace FGL
 		_blackFade->SetTargetAlpha(0.0f, 1.0f);
 	}
 
+	void World::LoadControls()
+	{
+		Reset();
+		new ControlMenu();
+		_blackFade->SetTargetAlpha(0.0f, 1.0f);
+	}
+
 	void World::Reset()
 	{
 		if(_maskSpawner)
@@ -132,7 +140,7 @@ namespace FGL
 	void World::Loop()
 	{
 		_blackFade = new BlackFadeEntity();
-		LoadMenu();
+		LoadControls();
 
 		sf::Clock clock;
 		sf::Time deltaTime;
