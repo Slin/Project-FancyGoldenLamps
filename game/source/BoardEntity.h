@@ -20,7 +20,12 @@ namespace FGL
 
 	private:
 		sf::Sprite *_object;
+		sf::Sprite _lightLeft;
+		sf::Sprite _lightRight;
+
 		std::vector<b2Body*> _bodies;
+
+		float _timer;
 	};
 }
 

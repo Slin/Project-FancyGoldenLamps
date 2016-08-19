@@ -20,9 +20,13 @@ namespace FGL
 
 	private:
 		sf::Sprite _backgroundImage;
+		sf::Sprite _lightDoor;
+		sf::Sprite _lightSign;
+		sf::Sprite _lightEnter;
 		sf::Music _music;
 
 		bool _canTrigger;
+		float timer;
 	};
 }
 

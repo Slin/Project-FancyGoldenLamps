@@ -8,7 +8,7 @@ namespace FGL
 {
 	EndMenu::EndMenu()
 	{
-		_backgroundImage.setTexture(*TexturePool::GetInstance()->GetTexture("assets/textures/menu.png"));
+		_backgroundImage.setTexture(*TexturePool::GetInstance()->GetTexture("assets/textures/end_screen.png"));
 		_backgroundImage.setOrigin(_backgroundImage.getLocalBounds().width*0.5f, _backgroundImage.getLocalBounds().height*0.5f);
 
 		_music.openFromFile("assets/sounds/menu.ogg");
@@ -24,11 +24,12 @@ namespace FGL
 
 	void EndMenu::Update(float timeStep)
 	{
+		sf::Time deltaTime = _clock.getElapsedTime();
 		for(int i = 0; i < sf::Keyboard::KeyCount; i++)
 		{
 			if(sf::Keyboard::isKeyPressed((sf::Keyboard::Key)i))
 			{
-				if(_canTrigger)
+				if(_canTrigger && deltaTime.asSeconds() > 3.0f)
 				{
 					World::GetInstance()->SetMusicPosition(_music.getPlayingOffset());
 					World::GetInstance()->ShouldLoadMenu();

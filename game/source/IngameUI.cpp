@@ -68,7 +68,7 @@ namespace FGL
 		if(_pointsLeft >= 20 || _pointsRight >= 20)
 		{
 			World::GetInstance()->SetMusicPosition(_music.getPlayingOffset());
-			World::GetInstance()->ShouldLoadMenu();
+			World::GetInstance()->ShouldLoadEnd();
 		}
 	}
 }

@@ -9,7 +9,7 @@ namespace FGL
 {
 	PlayerEntity::PlayerEntity(int id, sf::Vector2f position) : _throwTimer(100), _playerID(id), _jumpTimer(100), _spawnPosition(position), _currentMask(nullptr), _animationTimer(0.0f)
 	{
-		_object = World::CreateSprite("assets/textures/player.png");
+		_object = World::CreateSprite(((id==0)?"assets/textures/player.png":"assets/textures/player2.png"));
 		_object->setTextureRect(sf::IntRect(0, 0, 92, 124));
 		_object->setOrigin(_object->getLocalBounds().width*0.5f, _object->getLocalBounds().height*0.5f);
 		_object->move(position);
@@ -105,7 +105,7 @@ namespace FGL
 		{
 			if(_jumpTimer > 1 && isGrounded)
 			{
-				_body->ApplyLinearImpulse(b2Vec2(0.0f, -0.8f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
+				_body->ApplyLinearImpulse(b2Vec2(0.0f, -1.0f), b2Vec2(_body->GetPosition().x, _body->GetPosition().y), true);
 				_sound.setPitch(0.75f+(rand()/(float)INT_MAX)*0.5f);
 				_sound.play();
 			}

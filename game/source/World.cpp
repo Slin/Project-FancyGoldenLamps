@@ -10,6 +10,7 @@
 #include "MaskSink.h"
 #include "IngameUI.h"
 #include "StartMenu.h"
+#include "EndMenu.h"
 
 #if __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
@@ -31,7 +32,7 @@ namespace FGL
 		return _instance;
 	}
 
-	World::World() : _physicsWorld(nullptr), _screenShakeTimer(0.0f), _maskSpawner(nullptr), _shouldLoadLevel(false), _shouldLoadMenu(false)
+	World::World() : _physicsWorld(nullptr), _screenShakeTimer(0.0f), _maskSpawner(nullptr), _shouldLoadLevel(false), _shouldLoadMenu(false), _shouldLoadEnd(false)
 	{
 #if __APPLE__ && !(TARGET_OS_IPHONE) && NDEBUG
 		CFBundleRef bundle = CFBundleGetMainBundle();
@@ -68,10 +69,21 @@ namespace FGL
 		_shouldLoadMenu = true;
 	}
 
+	void World::ShouldLoadEnd()
+	{
+		_shouldLoadEnd = true;
+	}
+
 	void World::LoadMenu()
 	{
 		Reset();
 		new StartMenu();
+	}
+
+	void World::LoadEnd()
+	{
+		Reset();
+		new EndMenu();
 	}
 
 	void World::LoadLevel()
@@ -104,7 +116,7 @@ namespace FGL
 		if(_physicsWorld)
 			delete _physicsWorld;
 
-		b2Vec2 gravity(0.0f, 9.81f);
+		b2Vec2 gravity(0.0f, 9.81f*1.5f);
 		_physicsWorld = new b2World(gravity);
 	}
 
@@ -181,6 +193,12 @@ namespace FGL
 		{
 			LoadMenu();
 			_shouldLoadMenu = false;
+		}
+
+		if(_shouldLoadEnd)
+		{
+			LoadEnd();
+			_shouldLoadEnd = false;
 		}
 	}
 

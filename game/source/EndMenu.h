@@ -21,6 +21,7 @@ namespace FGL
 	private:
 		sf::Sprite _backgroundImage;
 		sf::Music _music;
+		sf::Clock _clock;
 
 		bool _canTrigger;
 	};
