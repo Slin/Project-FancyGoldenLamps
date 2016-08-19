@@ -83,7 +83,7 @@ namespace FGL
 			throwButton = sf::Keyboard::isKeyPressed(sf::Keyboard::RAlt);
 		}
 
-		moveDirection.x *= 0.1f;
+		moveDirection.x *= 0.07f;
 
 		if(fabsf(moveDirection.x) > 0.0f)
 		{
