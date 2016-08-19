@@ -24,6 +24,7 @@ namespace FGL
 	class BoardEntity;
 	class MaskSpawner;
 	class IngameUI;
+	class BlackFadeEntity;
 	class World
 	{
 	public:
@@ -116,6 +117,8 @@ namespace FGL
 		MaskSpawner *_maskSpawner;
 		IngameUI *_ingameUI;
 		sf::Time _musicPosition;
+
+		BlackFadeEntity *_blackFade;
 
 		bool _shouldLoadLevel;
 		bool _shouldLoadMenu;

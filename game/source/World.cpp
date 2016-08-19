@@ -11,6 +11,7 @@
 #include "IngameUI.h"
 #include "StartMenu.h"
 #include "EndMenu.h"
+#include "BlackFadeEntity.h"
 
 #if __APPLE__
 #include <CoreFoundation/CoreFoundation.h>
@@ -62,16 +63,19 @@ namespace FGL
 
 	void World::ShouldLoadLevel()
 	{
+		_blackFade->SetTargetAlpha(1.0f, 1.0f);
 		_shouldLoadLevel = true;
 	}
 
 	void World::ShouldLoadMenu()
 	{
+		_blackFade->SetTargetAlpha(1.0f, 1.0f);
 		_shouldLoadMenu = true;
 	}
 
 	void World::ShouldLoadEnd(int winner)
 	{
+		_blackFade->SetTargetAlpha(1.0f, 1.0f);
 		_shouldLoadEnd = winner;
 	}
 
@@ -79,12 +83,14 @@ namespace FGL
 	{
 		Reset();
 		new StartMenu();
+		_blackFade->SetTargetAlpha(0.0f, 1.0f);
 	}
 
 	void World::LoadEnd(int winner)
 	{
 		Reset();
 		new EndMenu(winner);
+		_blackFade->SetTargetAlpha(0.0f, 1.0f);
 	}
 
 	void World::LoadLevel()
@@ -102,6 +108,8 @@ namespace FGL
 		new PlayerEntity(1, sf::Vector2f(562.0f, 537.0f));
 
 		_maskSpawner = new MaskSpawner();
+
+		_blackFade->SetTargetAlpha(0.0f, 1.0f);
 	}
 
 	void World::Reset()
@@ -123,6 +131,7 @@ namespace FGL
 
 	void World::Loop()
 	{
+		_blackFade = new BlackFadeEntity();
 		LoadMenu();
 
 		sf::Clock clock;
@@ -164,8 +173,10 @@ namespace FGL
 			if(counter >= 10)
 				time = sf::Time::Zero;
 
-			_window->clear(sf::Color(100, 100, 100, 255));
+			//_window->clear(sf::Color(100, 100, 100, 255));
 			EntityManager::GetInstance()->Draw(_window);
+
+			_blackFade->DrawLate(_window);
 
 			_window->display();
 		}
@@ -184,23 +195,28 @@ namespace FGL
 		_window->setView(*_view);
 		_screenShakeTimer -= timeStep;
 
-		if(_shouldLoadLevel)
+		if(_blackFade->GetCurrentAlpha() >= 0.99f)
 		{
-			LoadLevel();
-			_shouldLoadLevel = false;
+			if(_shouldLoadLevel)
+			{
+				LoadLevel();
+				_shouldLoadLevel = false;
+			}
+
+			if(_shouldLoadMenu)
+			{
+				LoadMenu();
+				_shouldLoadMenu = false;
+			}
+
+			if(_shouldLoadEnd >= 0)
+			{
+				LoadEnd(_shouldLoadEnd);
+				_shouldLoadEnd = -1;
+			}
 		}
 
-		if(_shouldLoadMenu)
-		{
-			LoadMenu();
-			_shouldLoadMenu = false;
-		}
-
-		if(_shouldLoadEnd >= 0)
-		{
-			LoadEnd(_shouldLoadEnd);
-			_shouldLoadEnd = -1;
-		}
+		_blackFade->Update(timeStep);
 	}
 
 	void World::Shake()

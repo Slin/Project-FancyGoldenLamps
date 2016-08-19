@@ -15,12 +15,14 @@
       <sourceFolder url="file://$MODULE_DIR$/source/EndMenu.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/Entity.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/StartMenu.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/BlackFadeEntity.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/IngameUI.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/ParticleEmitter.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskEntity.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskSpawner.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/SoundPool.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskSink.h" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/source/BlackFadeEntity.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/MaskSink.cpp" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/World.h" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/source/TexturePool.cpp" isTestSource="false" />
